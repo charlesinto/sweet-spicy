@@ -119,6 +119,8 @@ section nav{
     -webkit-box-shadow: 0 4px 5px -6px #777;
     -moz-box-shadow: 0 4px 5px -6px #777;
         box-shadow: 0 4px 5px -6px #777;
+    z-index: 50;
+
 }
 
  ul {
@@ -143,7 +145,7 @@ li.company-name a{
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 60;
     top: 0;
     left: 0;
     background-color: #fff;
@@ -173,4 +175,41 @@ li.company-name a{
 }
 span#open-menu{
     cursor: pointer;
+}
+div.search-section{
+    display: flex;
+    align-items: center;
+    height: 45px;
+    position: fixed;
+    top: 57px;
+    left: 0;
+    right: 0;
+    z-index: 50;
+}
+div.search-box{
+    flex: 4;
+}
+div.componenet-1{
+    flex:1;
+    background-color: #e91e63;
+    height: 60px;
+}
+input[type=text]{
+    padding: 7px;
+    border: 1px solid #9e9e9eb0;
+    font-size: 17px;
+    /* flex: 1; */
+    width: 98%;
+    flex-basis: 1;
+    /* flex-grow: 1; */
+    /* flex-basis: 100%; */
+    height: 46px;
+}
+div.food-menu{
+    width: 100%;
+    height: 100vh;
+    top: 102px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
