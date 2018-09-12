@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import http from 'http';
 import path from 'path';
 import route from './route'
+import orders from './route/orders'
 require('dotenv').config();
 
 const apiVersion = express.Router();
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', route);
+
+app.use('/api/v1/orders', orders)
 
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
