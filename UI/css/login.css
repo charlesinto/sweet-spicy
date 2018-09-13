@@ -1,0 +1,117 @@
+@import url('/css/home.css');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Old+Standard+TT|Pacifico');
+div.container{
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100vh - 50px);
+    
+}
+div.company-head{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+div.company-logo{
+    display: flex;
+    height: 40px;
+    flex-direction: row;
+    align-items: center;
+}
+ form {
+    display: flex;
+    flex-direction: column;
+    flex:8;
+    /* justify-content: space-between; */
+    
+}
+input[type=email] , input[type=password]{
+    height: 30px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #2979ff;
+    background: #fff;
+    outline: none;
+    padding: 5px;
+    font-size: 16px;
+}
+.form-elements label{
+    margin-bottom: 10px;
+    margin-top:10px;
+}
+div.form-elements{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+div.login-form-mobile{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+}
+div.login-form-desktop{
+    width: 400px;
+    height: calc( calc(calc(100vh - 50px) / 2) + 200px );
+    border: 2px solid #81e9dd3d;
+    border-radius: 7px;
+    margin: 10px;
+    background: #fff;
+    -webkit-box-shadow: 2px 7px 7px -3px #777;
+    -moz-box-shadow: 2px 7px 7px -3px #777;
+        box-shadow: 2px 7px 7px -3px #777;
+    display:none;
+}
+
+@media screen and (min-width: 768px){
+    div.login-form-desktop{
+        display: flex !important;
+        flex-direction: column;
+    }
+    div.login-form-mobile{
+        display: none !important;
+    }
+    div.container{
+        background: #cddc39a8;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}
+@media screen and (min-width: 900px){
+    div.login-form-desktop{
+        width: 800px !important;
+    }
+}
+div.btn-group{
+    margin-top: 20px;
+}
+button{
+    border-radius: 5px;
+    height: 30px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Old Standard TT', serif;
+    font-size: 17px;
+    font-weight: 500;
+}
+.btn-login{
+    margin-bottom: 30px;
+    background: #1e88e5;
+}
+.btn-signup{
+    background: #00e676;
+}
+div.company-name{
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color:#f50057;
+    font-weight: 500;
+}

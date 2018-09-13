@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/login.css" />
+    <script type="text/javascript" src="/js/login.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <section>
+        <nav >
+            <ul class="mobile-nav">
+                <li>
+                    <span id="open-menu">&#9776;</span>
+                </li>
+                <li class="company-name"><a href="/">Sweet&amp;Spicy</a></li>
+            </ul>
+        
+            <ul class="desktop-nav">
+                
+                <li class="company-name"><a href="/">Sweet&amp;Spicy</a></li>
+                <li class="company-links">
+                    <a href="">Contact us</a>
+                </li>
+                <li class="company-links">
+                    <a href="">View Orders</a>
+                </li>
+                <li class="company-links">
+                    <a href="">My Cart</a>
+                </li>
+                <li class="company-links">
+                    <a href="/pages/login.html">Login</a>
+                </li>
+            </ul>
+        </nav>
+
+        </section>
+        <div class="container">
+            <div class="login-form-desktop">
+                    <div class="company-head">
+                            <div class="company-logo">
+                                <div>
+                                    <img src = "../asset/chef.svg" width="32px" height="32px"alt="logo" />
+                                </div>
+                                <div class="company-name">
+                                    Sweet&amp;Spicy
+                                </div>
+                            </div>
+                        </div>
+                        <form onsubmit="return false">
+                            <div class="form-elements">
+                                <label>email</label>
+                                <input type="email" placeholder="johnDoe@gmail.com" />
+                            </div>
+                            <div class="form-elements">
+                                <label>password</label>
+                                <input type="password" placeholder="password" />
+                            </div>
+                            <div class="btn-group">
+                                <div class="form-elements">
+                                    <button class="btn-login">Login</button>
+                                </div>
+                                <div class="form-elements">
+                                    <button class="btn-signup">Don't have Account? Sign Up</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+            </div>
+            <div class="login-form-mobile">
+                <div class="company-head">
+                    <div class="company-logo">
+                        <div>
+                            <img src = "../asset/chef.svg" width="32px" height="32px"alt="logo" />
+                        </div>
+                        <div class="company-name">
+                            Sweet&amp;Spicy
+                        </div>
+                    </div>
+                </div>
+                <form onsubmit="return false">
+                    <div class="form-elements">
+                        <label>email</label>
+                        <input type="email" placeholder="johnDoe@gmail.com" />
+                    </div>
+                    <div class="form-elements">
+                        <label>password</label>
+                        <input type="password" placeholder="password" />
+                    </div>
+                    <div class="btn-group">
+                        <div class="form-elements">
+                            <button class="btn-login">Login</button>
+                        </div>
+                        <div class="form-elements">
+                            <button class="btn-signup">Don't have Account? Sign Up</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" id="closeMenu" >&times;</a>
+            <a href="#">Contact us</a>
+            <a href="#">View Orders</a>
+            <a href="#">My Cart</a>
+            <a href="#">Login</a>
+        </div>
+        <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+    </script>
+</body>
+</html>
