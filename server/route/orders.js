@@ -191,4 +191,33 @@ router.put('/:id', (req,res) => {
     }
 
 })
+
+router.post('/', (req,res)=> {
+    let request = trimSpace(req.body);
+    if( !ValidateKeys(request, ["order", "quantity", "amount"])){
+        res.statusCode = 400;
+        res.setHeader('content-type', 'application/json');
+        return res.json({message:'Bad Request,one or more keys is missing'});
+    }
+    if( InputValidate(res, request)){
+        order.push(request);
+        res.statusCode = 201;
+        res.setHeader('content-type', 'application/json');
+        res.json({
+            message:`order posted successful`,
+            order: [request]
+            
+        })
+         
+    }else{
+        res.statusCode = 401;
+        res.setHeader('content-type', 'application/json');
+        res.json({
+            message:`operation failed`,
+            order:[]
+            
+        })
+    }
+     
+})
 export default router;
