@@ -1,4 +1,7 @@
 import express from 'express';
+import ValidateKeys from '../services/validateKeys';
+import InputValidate from '../services/inputValidator';
+import trimSpace from '../services/trimWhiteSpace'
 // import orders from '../Order.json'
 let router = express.Router();
 
@@ -151,5 +154,41 @@ router.get('/:id',function(req,res){
         order: order.filter(item => item.orderid === requestId)
         
     })
+})
+router.put('/:id', (req,res) => {
+    let requestId = parseInt(req.params.id);
+    let request = trimSpace(req.body);
+    if( !ValidateKeys(request, ["order", "quantity", "amount"])){
+        res.statusCode = 400;
+        res.setHeader('content-type', 'application/json');
+        return res.json({message:'Bad Request,one or more keys is missing'});
+    }
+    if( InputValidate(res, request)){
+       let arrayOrderToUpdate = order.filter(item => item.orderid === requestId)
+       if(arrayOrderToUpdate.length > 0){
+           order.forEach(element => {
+               if(element.orderid === requestId){
+                   element.order = request.order;
+                   element.quantity = request.quantity
+               }
+           })
+           res.statusCode = 201;
+            res.setHeader('content-type', 'application/json');
+            res.json({
+                message:`update successful`,
+                order: order.filter(item => item.orderid === requestId)
+                
+            })
+       }else{
+            res.statusCode = 404;
+            res.setHeader('content-type', 'application/json');
+            res.json({
+                message:`order not found`,
+                order:[]
+                
+            })
+       }
+    }
+
 })
 export default router;
