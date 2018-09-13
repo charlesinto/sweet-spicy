@@ -10,20 +10,20 @@ let validateKey = function(obj,keys){
         if(objetctKey.length !== keys.length){
             return false;
         }else{
-            let same;
+            let keyMatch;
             for(let i=0; i < keys.length; i++){
-                same = false;
+                keyMatch = false;
                 for(let j=0;j<objetctKey.length;j++){
                     if(keys[i] === objetctKey[j]){
-                        same = true;
+                        keyMatch = true;
                         
                     }
                 }
-                if(!same){
+                if(!keyMatch){
                     return false;
                 }
             }
-            if(same){
+            if(keyMatch){
                 return true
             }else{
                 return false;

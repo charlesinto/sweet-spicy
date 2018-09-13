@@ -5,7 +5,7 @@ let inputValidator = function(res, obj){
         
         let keys = Object.keys(obj)
         for(let i = 0; i< keys.length; i++){
-            if(keys[i] === 'firstname' || keys[i] === 'lastname'){
+            if(keys[i] === 'firstname' || keys[i] === 'lastname' || keys[i] === 'order'){
                 if( typeof obj[keys[i]] === undefined || obj[keys[i]] === '' || /[@!#$%^&*()\d~`<>?":{}+=?/]/i.test(obj[keys[i]])){
                     res.statusCode = 400;
                     res.setHeader('content-type', 'application/json');
@@ -16,6 +16,13 @@ let inputValidator = function(res, obj){
             }
             if(keys[i] === 'phonenumber'){
                 if( typeof obj[keys[i]] === "undefined" || obj[keys[i]] === '' || !Validator.isNumeric(obj[keys[i]]) || obj[keys[i]].length< 11){
+                    res.statusCode = 400;
+                    res.setHeader('content-type', 'application/json');
+                    res.json({message:`${keys[i]}  required and must be numbers of 11 digits`});
+                    return false;
+                }
+            }if(keys[i] === 'quantity'){
+                if( typeof obj[keys[i]] === "undefined" || obj[keys[i]] === '' || !Validator.isNumeric(obj[keys[i]])){
                     res.statusCode = 400;
                     res.setHeader('content-type', 'application/json');
                     res.json({message:`${keys[i]}  required and must be numbers of 11 digits`});
