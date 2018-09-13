@@ -5,6 +5,7 @@ import http from 'http';
 import path from 'path';
 import route from './route'
 import orders from './route/orders'
+import auth from './route/auth'
 require('dotenv').config();
 
 const apiVersion = express.Router();
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/', route);
-
+app.use('/api/v1/auth', auth)
 app.use('/api/v1/orders', orders)
 
 let port = process.env.PORT || 5000;
