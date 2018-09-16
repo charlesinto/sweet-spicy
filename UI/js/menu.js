@@ -1,7 +1,3 @@
-import express from 'express';
-import Helper from '../Helpers';
-let router = express.Router();
-
 let menu = [
     {
         imageid: 2,
@@ -80,18 +76,4 @@ let menu = [
 
 ]
 
-router.get('/',(req,res, next)=>{
-    res.sendFile(__dirname + '/index.html');
-});
-
-router.get('/api/v1/menu',(req,res, next)=>{
-    res.statusCode = 201;
-    res.setHeader('content-type', 'application/json');
-    res.json({
-        message:`menu items loaded`,
-        order:menu
-        
-    })
-});
-
-export default router;
+export default menu;s

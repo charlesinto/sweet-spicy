@@ -1,7 +1,11 @@
+// import { checkServerIdentity } from "tls";
+
+let ArrayId = [];
+let cartArray = [];
+let orderCount = 0;
+
 window.onload = function(){
-    openMenu();
-    closeMenuBar();
-    displayFoodItems();
+    monitorQuantityToggleDisplay();
 }
 let closeMenuBar = () =>{
     document.getElementById('closeMenu').addEventListener('click', (e)=> {
@@ -29,7 +33,7 @@ let closeNav = () => {
         
 }
 
-let getFoodMenu = () =>{
+let getMenu = () => {
     return [
         {
             imageid: 2,
@@ -103,17 +107,24 @@ let getFoodMenu = () =>{
             name: "Beans porridge",
             amount:"900"
         }
-
-
-
+    
+    
+    
     ]
 }
 
+
 let displayFoodItems = () => {
-   let menuItem = getFoodMenu();
-   
-   menuItem.forEach( item => {
-        foodItem = document.createElement('div');
+   let menu = getMenu();
+   menu.forEach( item => {
+        listItem(item)
+   })
+   addEventToCheckoutButton(); 
+   addEventToInput();
+}
+
+let listItem = (item ) => {
+    foodItem = document.createElement('div');
         foodItem.className = "food-items make-it-slow";
         foodItem.id = item.imageid
         let image = document.createElement('div');
@@ -122,20 +133,170 @@ let displayFoodItems = () => {
         foodItem.appendChild(image);
         let desciptionContainer = document.createElement('div')
         desciptionContainer.className = 'short-description'
-        let span1 = document.createElement('span');
-        span1.appendChild(document.createTextNode(item.name));
-        desciptionContainer.appendChild(span1);
+        let span3 = document.createElement('span');
+        span3.appendChild(document.createTextNode(item.name.toUpperCase()))
+        span3.className = "item-name"
+        desciptionContainer.appendChild(span3);
         let span2 = document.createElement('span');
-        span2.appendChild(document.createTextNode(item.amount))
+        span2.appendChild(document.createTextNode(`\u20A6 ${item.amount}`))
+        span2.className = "item-amount";
+        let checkoutButton = document.createElement('button');
+        checkoutButton.appendChild(document.createTextNode('Checkout'))
+        checkoutButton.className = "checkout-button"
+        let quantityContainer = document.createElement('div');
+        quantityContainer.className = 'pick-quantity';
+        let span4 = document.createElement('span')
+        span4.appendChild(document.createTextNode(`\u3008`))
+        let span5 = document.createElement('span')
+        span5.appendChild(document.createTextNode(`\u3009`))
+        span5.className = 'arrow right';
+        span4.className = 'arrow left'
+        let input = document.createElement('input')
+        input.name = 'quantity';
+        input.className = 'order-quantity'
+        input.type = "number";
+        input.placeholder = "1";
+        input.min = 1
+        quantityContainer.appendChild(span4);
+        quantityContainer.appendChild(input);
+        quantityContainer.appendChild(span5);
         desciptionContainer.appendChild(span2);
+        desciptionContainer.appendChild(checkoutButton);
+        desciptionContainer.appendChild(quantityContainer);
         foodItem.appendChild(desciptionContainer)
         console.log("imahe",image.style.backgroundImage)
         console.log('food-item', foodItem.style)
         document.getElementsByClassName('food-menu')[0].appendChild(foodItem);
-   })
-   
-
-  
 }
 
+let addEventToCheckoutButton = () => {
+    Array.from(document.getElementsByClassName('checkout-button')).forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('dis btn', e)
+            e.target.style.display = "none"
+            e.target.nextSibling.style.display = "flex"
+            let  itemId = parseInt(e.target.parentNode.parentNode.id);
+            let selectedItem = getMenu().filter(item => item.imageid === itemId);
+            
+            addToCart(selectedItem)
+        })
+    })
+    addEventToArrows();
+}
+
+let addToCart = (item) => {
+    if(ArrayId.includes(item[0].imageid)){
+        cartArray.forEach(order => {
+            if(order.imageid === item[0].imageid){
+                order.quantity++
+                orderCount++
+            }
+        })
+    }else{
+        ArrayId.push(item[0].imageid);
+        cartArray.push({...item[0], quantity: 1})
+        orderCount++;
+    }
+    
+    updateLabel(orderCount)
+    console.log('ids',ArrayId);
+    console.log('orders', cartArray);
+}
+
+let updateLabel = (count) => {
+    Array.from(document.getElementsByClassName('counter')).forEach(label => {
+        label.innerText = count;
+    })
+    Array.from(document.getElementsByClassName('label')).forEach(divLabel => {
+        divLabel.style.display = 'flex'
+    })
+}
+let addEventToInput = () => {
+    Array.from(document.getElementsByClassName('order-quantity')).forEach( input => {
+        input.addEventListener('change', (e) => {
+            e.stopPropagation();
+            console.log(e.target.parentNode.parentNode.parentNode.id);
+            let id = parseInt(e.target.parentNode.parentNode.parentNode.id)
+            let order = cartArray.filter(item => item.imageid === id);
+            orderCount -= order[0].quantity;
+            newQuantity = parseInt(e.target.value);
+            cartArray.forEach(item => {
+                if(item.imageid === id){
+                    item.quantity = newQuantity;
+                }
+            })
+            orderCount += newQuantity;
+            updateLabel(orderCount);
+        })
+    })
+}
+let addEventToArrows = () => {
+    Array.from(document.getElementsByClassName('right')).forEach(arrow => {
+        arrow.addEventListener('click',(e) => {
+            e.stopPropagation();
+            //e.target.parentNode.childNodes[1].value = parseInt(e.target.parentNode.childNodes[1].value) + 1
+            if(e.target.parentNode.children[1].value == ''){
+                e.target.parentNode.children[1].value = 2
+                orderCount++;
+                updateLabel(orderCount);
+                let itemId = parseInt(e.target.offsetParent.id)
+                updateCart(itemId, 'ADD')
+            }else{
+                e.target.parentNode.children[1].value = parseInt(e.target.parentNode.children[1].value) + 1;
+                orderCount++;
+                updateLabel(orderCount);
+                let itemId = parseInt(e.target.offsetParent.id)
+                updateCart(itemId, 'ADD')
+            }
+            console.log('e', e)
+        })
+    })
+    Array.from(document.getElementsByClassName('left')).forEach(arrow => {
+        arrow.addEventListener('click',(e) => {
+            e.stopPropagation();
+            if(parseInt(e.target.parentNode.children[1].value) > 1){
+                e.target.parentNode.children[1].value = parseInt(e.target.parentNode.children[1].value) - 1
+                orderCount--;
+                updateLabel(orderCount);
+                let itemId = parseInt(e.target.offsetParent.id)
+                updateCart(itemId, 'SUBTRACT')
+            } 
+            console.log('e',e)
+        })
+    })
+}
+let updateCart = (id, action) => {
+    switch(action){
+        case 'ADD':
+            cartArray.forEach(item => {
+                if(item.imageid == id){
+                    item.quantity++;
+                }
+            })
+            break;
+        case 'SUBTRACT':
+            cartArray.forEach(item => {
+                if(item.imageid == id){
+                    item.quantity--;
+                }
+            })
+            break;
+        default:
+
+    }
+}
+
+let monitorQuantityToggleDisplay = () => {
+    let interval = setInterval(() => {
+        if(orderCount === 0){
+            Array.from(document.getElementsByClassName('label')).forEach(divLabel => {
+                divLabel.style.display = 'none'
+            })
+        }
+    }, 500)
+    openMenu();
+    closeMenuBar();
+    displayFoodItems();
+}
 
