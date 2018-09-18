@@ -5,6 +5,18 @@ let cartArray = [];
 let orderCount = 0;
 
 window.onload = function(){
+    getCart();
+}
+let getCart = () => {
+    if(localStorage.getItem("cart")){
+        let cart = JSON.parse(localStorage.getItem("cart"))
+        if(cart.length > 0){
+            cart.forEach(item => {
+                ArrayId.push(item.imageid)
+            })
+            cartArray = [...cart]
+        }
+    }
     monitorQuantityToggleDisplay();
 }
 let closeMenuBar = () =>{
@@ -230,6 +242,7 @@ let addEventToInput = () => {
             updateLabel(orderCount);
         })
     })
+    goToCartEventListener();
 }
 let addEventToArrows = () => {
     Array.from(document.getElementsByClassName('right')).forEach(arrow => {
@@ -300,3 +313,13 @@ let monitorQuantityToggleDisplay = () => {
     displayFoodItems();
 }
 
+let goToCartEventListener = () => {
+    Array.from(document.getElementsByClassName("cart-item")).forEach(cart => {
+        cart.addEventListener('click', (e) => {
+            e.stopPropagation();
+            localStorage.setItem('cart', JSON.stringify(cartArray));
+            sessionStorage.setItem('cart', JSON.stringify(cartArray));
+            window.location.href = window.origin + '/pages/cart.html'
+        })
+    })
+}
