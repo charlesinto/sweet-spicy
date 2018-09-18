@@ -60,13 +60,13 @@ div.login-form-mobile{
 div.login-form-desktop{
     width: 400px;
     height: calc( calc(calc(100vh - 50px) / 2) + 200px );
-    border: 2px solid #81e9dd3d;
+    border: 1px solid #9E9E9E;
     border-radius: 7px;
     margin: 10px;
     background: #fff;
-    -webkit-box-shadow: 2px 7px 7px -3px #777;
+    /* -webkit-box-shadow: 2px 7px 7px -3px #777; */
     -moz-box-shadow: 2px 7px 7px -3px #777;
-        box-shadow: 2px 7px 7px -3px #777;
+    /* box-shadow: 2px 7px 7px -3px #777; */
     display:none;
 }
 
@@ -79,16 +79,17 @@ div.login-form-desktop{
         display: none !important;
     }
     div.container{
-        background: #cddc39a8;
+        background: #fff;
         justify-content: center;
         align-items: center;
     }
     
 }
-@media screen and (min-width: 900px){
-    div.login-form-desktop{
-        width: 800px !important;
-    }
+a.signup {
+    align-self: center;
+}
+a.signup:hover {
+    text-decoration: underline;
 }
 div.btn-group{
     margin-top: 20px;

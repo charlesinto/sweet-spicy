@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="/js/cart.js"></script>
+    <link rel="stylesheet" href = "/css/cart.css" />
+    <title>Cart</title>
+</head>
+<body>
+    <div class="mobile-view">
+       <section class="desktop">
+            <nav>
+                    <ul class="desktop-nav">
+                        
+                            <li class="company-name"><a href="/">Sweet&amp;Spicy</a></li>
+                            <li class="company-links">
+                                <a href="">Contact us</a>
+                            </li>
+                            <li class="company-links">
+                                <a href="">View Orders</a>
+                            </li>
+                            <!-- <li class="company-links">
+                                <a href="">My Cart</a>
+                            </li> -->
+                            <li class="company-links">
+                                <a href="/pages/login.html">Login</a>
+                            </li>
+                            <li class="cart">
+                                    <div class="cart-icon">
+                                        <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
+                                        <div class="label">
+                                            <div class="counter">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                        </ul>
+                </nav>
+       </section> 
+        
+        <div class="go-to-shop">
+            <span class="back-arrow">&lt;</span><span class="location">Continue Shopping</span>
+        </div>
+        <div class="info" id="shortInfo">
+            <div class="info-quantity"><span id="totalQuantity"></span>items</div>
+            <div class="info-amount">&#8358;<span class="totalAmount"></span></div>
+        </div>
+        <div class="checkout-items" id="checkout">
+            <div class="orders">
+
+            </div>
+            <div class="order-summary">
+                <p>Total</p>
+                <div class="item-amount item">
+                        <span id="amount-symbol">&#8358;</span><span class="totalAmount"></span> 
+                </div>
+                    <button class = " checkout-button2" id="check-btn2">Checkout</button>
+                
+            </div>
+            <!-- <div class="order-item">
+                <div class="item-name item">
+                    Rice
+                </div>
+                <div class="range">
+                    <div class="back-arrow arrow">
+                        &lt;
+                    </div>
+                    <div class="item-quantity">
+                        <input type="number" min="1" />
+                    </div>
+                    <div class="front-arrow arrow">
+                        &gt;
+                    </div>
+                </div>
+                <div class="item-amount item">
+                  <span id="amount-symbol">&#8358;</span><span class="price">3000</span> 
+                </div>
+                <div class="remove-item">
+                    <button>&times;</button>
+                </div>
+                
+            </div>
+            <div class="order-item">
+                    <div class="item-name item">
+                        Rice
+                    </div>
+                    <div class="range">
+                        <div class="back-arrow arrow">
+                            &lt;
+                        </div>
+                        <div class="item-quantity">
+                            <input type="number" min="1" />
+                        </div>
+                        <div class="front-arrow arrow">
+                            &gt;
+                        </div>
+                    </div>
+                    <div class="item-amount item">
+                      <span id="amount-symbol">&#8358;</span><span class="price">3000</span> 
+                    </div>
+                    <div class="remove-item">
+                        <button>&times;</button>
+                    </div>
+                    
+                </div> -->
+            <div class="empty-cart">
+                <img src="/asset/cart.svg" width="48px" height="48px" alt="cart" />
+                <p>Cart is empty</p>
+            </div>
+        
+        </div>
+        <button class = "check checkout-button" id="check-btn"></button>
+    </div>
+    
+</body>
+</html>
