@@ -31,6 +31,7 @@
     * itemname
     * quantity
     * unit_price
+    * itemid
 
 ## Dependencies
 * nodejs
