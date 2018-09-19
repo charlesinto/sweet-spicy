@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src = '/js/user_order.js'></script>
+    <link rel="stylesheet" href = "/css/user_orders.css" />
+    <title>Order</title>
+</head>
+<body>
+    <div class="mobile-view">
+        <section>
+            <nav >
+                <ul class="mobile-nav">
+                    <li>
+                        <span id="open-menu">&#9776;</span>
+                    </li>
+                    <li class="company-name"><a href="/">Sweet&amp;Spicy</a></li>
+                    <li class="cart add-to-cart">
+                        <div class="cart-icon">
+                            <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
+                            <div class="label">
+                                <div class="counter">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            
+                <ul class="desktop-nav">
+                    
+                    <li class="company-name"><a href="/">Sweet&amp;Spicy</a></li>
+                    <li class="company-links">
+                        <a href="">Contact us</a>
+                    </li>
+                    <li class="company-links">
+                        <a href="">View Orders</a>
+                    </li>
+                    <!-- <li class="company-links">
+                        <a href="">My Cart</a>
+                    </li> -->
+                    <li class="company-links">
+                        <a href="/pages/login.html">Login</a>
+                    </li>
+                    <li class="cart">
+                            <div class="cart-icon">
+                                <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
+                                <div class="label">
+                                    <div class="counter">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+            </nav>
+
+            </section>
+        </div>
+        <div class="body">
+            <div class="sect-1">
+
+            </div>
+            <div class="table-container">
+                <div class="search-box1">
+                    <div class="input">
+                        <label>Batch Id</label>
+                        <input type="text" placeholder="orderid" />
+                    </div>
+                    <button class="search-btn">Search</button>
+                </div>
+                <div class="table-div">
+                        <table id="customers">
+                                <tr>
+                                  <th>s/n</th>
+                                  <th>batchId</th>
+                                  <th>order</th>
+                                  <th>quantity</th>
+                                  <th>amount paid (&#8358;)</th>
+                                  <th>status</th>
+                                </tr>
+                                <tr>
+                                  <td>1</td>
+                                  <td>123</td>
+                                  <td>rice</td>
+                                  <td>10</td>
+                                  <td> 10,000</td>
+                                  <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status resolved">Delivered</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td><div class="status declined">Declined</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td> 10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>123</td>
+                                    <td>rice</td>
+                                    <td>10</td>
+                                    <td>10,000</td>
+                                    <td><div class="status pending">Pending</div></td>
+                                </tr>
+                              </table>
+                </div>
+                
+                  
+            </div>
+            <div class="sect-2"></div>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" id="closeMenu" >&times;</a>
+            <a href="#">Contact us</a>
+            <a href="#">View Orders</a>
+            <a href="#">My Cart</a>
+            <a href="/pages/login.html">Login</a>
+        </div>
+
+</body>
+</html>
