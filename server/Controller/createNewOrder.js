@@ -3,7 +3,6 @@ import order from '../Orders';
 import Helpers from '../Helpers';
 
 export const createNewOrder = (req, res) => {
-    console.log(req.body)
     if(!Helpers.validateKey(req.body,['order','userid'])){
         res.statusCode = 400;
         res.setHeader('content-type', 'application/json');
@@ -13,8 +12,7 @@ export const createNewOrder = (req, res) => {
         let request = []
         for(let i = 0; i< req.body.order.length; i++){
             console.log(req.body.order[i]);
-            let re = Helper.trimWhiteSpace(req.body.order[i])
-            console.log(re);
+            let re = Helper.trimWhiteSpace(req.body.order[i]);
             if(!Helpers.validateKey(re,["itemname", "quantity", "amount","itemid"])){
                 res.statusCode = 403;
                 res.setHeader('content-type', 'application/json');
