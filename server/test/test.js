@@ -8,9 +8,10 @@ chai.use(chaiHttp);
 let order = {
     "itemname":"fried rice",
     "quantity": "5",
-    "unit_price": "7000"
+    "unit_price": "7000",
+    "itemid": 10
 }
-let r= {
+let request= {
 	order:[
 				{
 			itemname:"chicken",
@@ -23,7 +24,6 @@ let r= {
     userid: 1
     
 }
-let request = r
 describe('Test all api end points', function(){
     describe('It should get all orders', function(){
         this.timeout(20000);
@@ -131,47 +131,47 @@ describe('Test all api end points', function(){
     describe('It should update an order by id', function(){
         this.timeout(20000);
         it('response should have a status of 201',(done)=>{
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
                 
                 expect(res).to.have.status(201);
                 done();
             })
         })
         it('response should be an object', function(done){
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
                 expect(res).to.be.an('object');
                 done();
             })
         })
         it('response.text to be a string', function(done){
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
                 expect(res.text).to.be.string
                 done();
             })
         })
         it('response to have property message', function(done){
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
                 expect(res.body).to.have.property('message');
                 done();
             })
         })
         it('response to have property requests', function(done){
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
-                expect(res.body).to.have.property('order');
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
+                expect(res.body).to.have.property('requstUpdate');
                 done();
             })
         })
         it('response.message to be operation successful', function(done){
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
             
                 expect(res.body.message).to.equal("update successful")
                 done();
             })
         })
         it('request should be an array', function(done){
-            chai.request(app).put('/api/v1/orders/12').type('form').send(order).end(function(err,res){
+            chai.request(app).put('/api/v1/orders/1').type('form').send(order).end(function(err,res){
             
-                expect(res.body.order).to.be.an('object')
+                expect(res.body.requstUpdate).to.be.an('array')
                 done();
             })
         })

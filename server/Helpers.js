@@ -13,7 +13,11 @@ class Helpers {
     trimWhiteSpace(obj){
         if(typeof obj !== "undefined" && obj !== '' && typeof obj === 'object' && typeof obj.length === "undefined"){
            
-            Object.keys(obj).forEach(function(key){ obj[key] = obj[key].trim() });
+            Object.keys(obj).forEach(function(key){ 
+                if( typeof obj[key] !== "number"){
+                    obj[key] = obj[key].trim()
+                }
+             });
             return obj;
         
         }else{
