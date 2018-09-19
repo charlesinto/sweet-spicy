@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="/js/admin_orders.js"></script>
+    <link rel='stylesheet' href="/css/admin_orders.css" />
+    <title>Admin Dashboard</title>
+</head>
+<body>
+        <div class="mobile-view">
+                <section>
+                    <nav >
+                        <ul class="mobile-nav">
+                            <li>
+                                <span id="open-menu">&#9776;</span>
+                            </li>
+                            <li class="company-name"><a href="/pages/admin.html">Sweet&amp;Spicy</a></li>
+                            <!-- <li class="cart add-to-cart">
+                                <div class="cart-icon">
+                                    <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
+                                    <div class="label">
+                                        <div class="counter">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> -->
+                        </ul>
+                    
+                        <ul class="desktop-nav">
+                            
+                            <li class="company-name"><a href="/pages/admin.html">Sweet&amp;Spicy</a></li>
+                            <li class="company-links">
+                                <a href="/pages/admin_orders.html">View Orders</a>
+                            </li>
+                            <li class="company-links">
+                                <a href="/pages/upload.html">Upload Item</a>
+                            </li>
+                            <li class="company-links">
+                                <a href="#">Create Admin</a>
+                            </li>
+                            <li class="company-links">
+                                <a href="/">Log Out</a>
+                            </li>
+                            <!-- <li class="cart">
+                                    <div class="cart-icon">
+                                        <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
+                                        <div class="label">
+                                            <div class="counter">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li> -->
+                        </ul>
+                    </nav>
+        
+                    </section>
+                </div>
+                <div class="body">
+                    <div class="sect-1">
+        
+                    </div>
+                    <div class="table-container">
+                        <div class="search-box1">
+                            <div class="input">
+                                <label>Order Id</label>
+                                <input type="text" placeholder="orderid" />
+                            </div>
+                            <button class="search-btn">Search</button>
+                        </div>
+                        <div class="table-div">
+                                <table id="customers">
+                                        <tr>
+                                          <th>s/n</th>
+                                          <th>batchId</th>
+                                          <th>order</th>
+                                          <th>quantity</th>
+                                          <th>amount paid (&#8358;)</th>
+                                          <th>status</th>
+                                          <th>Action</th>
+                                        </tr>
+                                        <tr>
+                                          <td>1</td>
+                                          <td>123</td>
+                                          <td>rice</td>
+                                          <td>10</td>
+                                          <td> 10,000</td>
+                                          <td><div class="status pending">Pending</div></td>
+                                          <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status resolved">Delivered</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td>10,000</td>
+                                            <td><div class="status declined">Declined</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td> 10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>123</td>
+                                            <td>rice</td>
+                                            <td>10</td>
+                                            <td>10,000</td>
+                                            <td><div class="status pending">Pending</div></td>
+                                            <td><div class="action"></div></td>
+                                        </tr>
+                                      </table>
+                        </div>
+                        
+                          
+                    </div>
+                    <div class="sect-2"></div>
+                </div>
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" id="closeMenu" >&times;</a>
+                    <a href="/pages/admin.html">View Orders</a>
+                    <a href="/pages/upload.html">Upload Item</a>
+                    <a href="#">Create Admin</a>
+                    <a href="/">Logout</a>
+                </div>
+</body>
+</html>

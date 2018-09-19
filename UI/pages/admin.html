@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript"src="/js/admin.js"></script>
+    <link rel="stylesheet" href="/css/admin.css" />
+    <title>Admin Dashboard</title>
+</head>
+<body>
+        <div class="mobile-view">
+                <section>
+                    <nav >
+                        <ul class="mobile-nav">
+                            <li>
+                                <span id="open-menu">&#9776;</span>
+                            </li>
+                            <li class="company-name"><a href="#">Sweet&amp;Spicy</a></li>
+                            <!-- <li class="cart add-to-cart">
+                                <div class="cart-icon">
+                                    <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
+                                    <div class="label">
+                                        <div class="counter">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </li> -->
+                        </ul>
+                    
+                        <ul class="desktop-nav">
+                            
+                            <li class="company-name"><a href="/pages/admin.html">Sweet&amp;Spicy</a></li>
+                            <!-- <li class="company-links">
+                                <a href="">Contact us</a>
+                            </li> -->
+                            <li class="company-links">
+                                <a href="/pages/admin_orders.html">View Orders</a>
+                            </li>
+                            <li class="company-links">
+                                    <a href="#">Create Users</a>
+                                </li>
+                            <li class="company-links">
+                                <a href="/pages/upload.html">Upload Item</a>
+                            </li>
+                            <li class="company-links">
+                                <a href="/">Log out</a>
+                            </li>
+                        </ul>
+                    </nav>
+        
+                    </section>
+                    <div class="search-section">
+                        <div class="componenet-1"></div>
+                        <div class="search-box"> 
+                            <input type="text" placeholder="Search..">
+                        </div>
+                        <div class="componenet-1"></div>
+                    </div>
+                    <div id="mySidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" id="closeMenu" >&times;</a>
+                        
+                        <a href="/pages/admin_orders.html">View Orders</a>
+                        <a href="/pages/upload.html">Upload Item</a>
+                        <a href="#">Create Users</a>
+                        <a href="/">logout</a>
+                    </div>
+            </div>
+            <div class="food-menu">
+                
+            </div>
+            
+            <script type='text/javascript' src="/socket.io/socket.io.js"></script>
+            <script>
+                let socket = io();
+                // function closeNav(e) {
+                    
+                //     document.getElementById("mySidenav").style.width = "0";
+                // }
+            </script>
+</body>
+</html>
