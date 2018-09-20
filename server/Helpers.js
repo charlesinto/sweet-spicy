@@ -1,4 +1,6 @@
-import Validator from 'validator'
+import Validator from 'validator';
+import pool from './DatabaseConnection';
+import jwt from 'jsonwebtoken';
 /*
 *@ helper functions
 * @trimeWhiteSpace given an object, it removes the whitespaces in the values of the object
@@ -8,7 +10,9 @@ import Validator from 'validator'
 */
 class Helpers {
     constructor(){
-
+        this.executeQuery = this.executeQuery.bind(this);
+        this.connectToDb = this.connectToDb.bind(this);
+        this.assignToken = this.assignToken.bind(this);
     }
     trimWhiteSpace(obj){
         if(typeof obj !== "undefined" && obj !== '' && typeof obj === 'object' && typeof obj.length === "undefined"){
@@ -124,6 +128,66 @@ class Helpers {
                 })
                 
             }
+    }
+    connectToDb(){
+        return new Promise((resolve,reject)=>{
+            pool.connect((err,client,done)=>{
+                if(err){
+                    console.log('err', err)
+                    reject(err);
+                }else{
+                    resolve(client,done);
+                }
+            })
+        })
+    }
+
+    executeQuery(sql, params){
+        return new Promise((resolve,reject)=>{
+            this.connectToDb().then((client,done)=>{
+                if(typeof params !== "undefined" && params.length > 0){
+                    client.query(sql,params,(err,result)=>{
+                        client.release();
+                        if(err){
+                            console.log('err1',err)
+                            reject(err);
+                        }else{
+                            resolve(result)
+                        }
+                    })
+                    
+                }else{
+                    client.query(sql,(err,result)=>{
+                        client.release();
+                        if(err){
+                            console.log('err1',err)
+                            reject(err);
+                        }else{
+                            resolve(result)
+                        }
+                    })
+                }   
+                    
+            })
+            .catch((err)=>{
+                    console.log('err2',err)
+                    reject(err);
+            })
+        })
+        
+    }
+    assignToken(payload){
+        let key = process.env.SECRET_KEY || 'brillianceisevenlydistributed';
+        return new Promise((resolve,reject)=>{
+            jwt.sign(payload,key,{expiresIn:'7 days'},(err,token)=>{
+                if(err){
+                    reject(err);       
+                }else{
+                    resolve(token);
+                }
+            })
+                
+        })
     }
 }
 
