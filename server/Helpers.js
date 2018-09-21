@@ -129,11 +129,14 @@ class Helpers {
                 
             }
     }
+    /**
+ * Initiates connection a database.
+ * @author: charles
+ */
     connectToDb(){
         return new Promise((resolve,reject)=>{
             pool.connect((err,client,done)=>{
                 if(err){
-                    console.log('err', err)
                     reject(err);
                 }else{
                     resolve(client,done);
@@ -141,7 +144,13 @@ class Helpers {
             })
         })
     }
-
+/**
+ * Executes a query againt postgress database
+ *
+ *
+ * @author: charles
+ * @param {sql, params} r takes in the sql statement and the parameters to be passed in.
+ */
     executeQuery(sql, params){
         return new Promise((resolve,reject)=>{
             this.connectToDb().then((client,done)=>{
@@ -172,6 +181,13 @@ class Helpers {
         })
         
     }
+    /**
+ * Assign token to user
+ *
+ * 
+ * @author: chalres
+ * @param {payload}  The user details.
+ */
     assignToken(payload){
         let key = process.env.SECRET_KEY || 'brillianceisevenlydistributed';
         return new Promise((resolve,reject)=>{
@@ -197,4 +213,4 @@ class Helpers {
     }
 }
 
-export default new Helpers();
+export default new Helpers()
