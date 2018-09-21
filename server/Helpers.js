@@ -158,7 +158,7 @@ class Helpers {
                     
                 }else{
                     client.query(sql,(err,result)=>{
-                        client.release();
+                      client.release();
                         if(err){
                             console.log('err1',err)
                             reject(err);
@@ -166,8 +166,7 @@ class Helpers {
                             resolve(result)
                         }
                     })
-                }   
-                    
+                }      
             })
             .catch((err)=>{
                     console.log('err2',err)
@@ -188,6 +187,16 @@ class Helpers {
             })
                 
         })
+    }
+    displayMessage(res,statusCode, message, details){
+        if(typeof details !== 'undefined'){
+            res.statusCode = statusCode;
+            res.setHeader('content-type', 'application/json');
+            return res.json({message,details});
+        }
+        res.statusCode = statusCode;
+        res.setHeader('content-type', 'application/json');
+        return res.json({message});
     }
 }
 
