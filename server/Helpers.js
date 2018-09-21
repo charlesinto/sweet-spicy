@@ -149,7 +149,6 @@ class Helpers {
                     client.query(sql,params,(err,result)=>{
                         client.release();
                         if(err){
-                            console.log('err1',err)
                             reject(err);
                         }else{
                             resolve(result)
@@ -160,7 +159,6 @@ class Helpers {
                     client.query(sql,(err,result)=>{
                       client.release();
                         if(err){
-                            console.log('err1',err)
                             reject(err);
                         }else{
                             resolve(result)
@@ -169,7 +167,6 @@ class Helpers {
                 }      
             })
             .catch((err)=>{
-                    console.log('err2',err)
                     reject(err);
             })
         })
