@@ -10,11 +10,10 @@ import pg from 'pg';
 require('dotenv').config();
 let pool;
 if(process.env.NODE_ENV ==='DEVELOPMENT'){
-     pool = new pg.Pool(config);
     const config = {
-        user: DB_USER,
-        database: LOCAL_DB, 
-        password: DB_PASSWORD, 
+        user:process.env.DB_USER,
+        database: process.env.LOCAL_DB, 
+        password: process.env.DB_PASSWORD, 
         port: 5432, 
         max: 20, // max number of connection can be open to database
         idleTimeoutMillis: 50000,
@@ -23,7 +22,7 @@ if(process.env.NODE_ENV ==='DEVELOPMENT'){
 }
 else if(process.env.NODE_ENV === 'TEST'){
      pool = new pg.Pool({
-        connectionString:DATABASE_URL, ssl:true
+        connectionString:process.env.DATABASE_URL, ssl:true
     });
  }
 else{

@@ -1,12 +1,8 @@
 import express from 'express';
-import ValidateKeys from '../services/validateKeys';
-import InputValidate from '../services/inputValidator';
-import trimSpace from '../services/trimWhiteSpace'
-// import orders from '../Order.json'
+import {loginUser} from '../Controller'
+
 let router = express.Router();
 
-router.get('/login', (req,res) => {
-
-})
+router.post('/login', loginUser)
 
 export default router;
