@@ -32,7 +32,8 @@
     * quantity
     * unit_price
     * itemid
-
+#### GET api/v1/menu
+* Gets available menu. No paramters required
 ## Dependencies
 * nodejs
 * express
