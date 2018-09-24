@@ -24,9 +24,16 @@ let request= {
     userid: 1
     
 }
+let createuser = {
+	"phonenumber":"08163113450",
+	"email":"charles.onuorah1@yahoo.com",
+	"firstname":"charles",
+	"lastname":"onuorah",
+	"password":"3450"
+}
 describe('Test all api end points', function(){
     describe('It should get all orders', function(){
-        this.timeout(20000);
+        this.timeout(40000);
         it('response should have a status of 200',(done)=>{
             chai.request(app).get('/api/v1/orders').end(function(err,res){
                 
@@ -197,4 +204,51 @@ describe('Test all api end points', function(){
             })
         })
     })
+    describe('it should sign up a user',() => {
+        this.timeout(40000);
+        it('response should be an object', function(done){
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response to have property message', function(done){
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })
+        it('response should have a status of 201',(done)=>{
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                
+                expect(res).to.have.status(201);
+                done();
+            })
+        })
+        it('response to have property token', function(done){
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                expect(res.body).to.have.property('token');
+                done();
+            })
+        })
+        it('response to have property roleid', function(done){
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                expect(res.body).to.have.property('roleid');
+                done();
+            })
+        })
+        it('response to have property rolename', function(done){
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                expect(res.body).to.have.property('rolename');
+                done();
+            })
+        })
+        it('response to have property useremail', function(done){
+            chai.request(app).post('/api/v1/auth/signup').type('form').send(createuser).end(function(err,res){
+                expect(res.body).to.have.property('useremail');
+                done();
+            })
+        })
+    })
 })
+
