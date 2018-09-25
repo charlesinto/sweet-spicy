@@ -338,4 +338,44 @@ describe('Test all api end points', function(){
             })
         })
     })
+    describe('it should get store menu',() => {
+        this.timeout(40000);
+        it('res should be an object', function(done){
+            chai.request(app).get('/api/v1/menu').type('form').end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response.body to have property message', function(done){
+            chai.request(app).get('/api/v1/menu').type('form').end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })
+        it('response.message should be operation successful', function(done){
+            chai.request(app).get('/api/v1/menu').type('form').end(function(err,res){
+                expect(res.body.message).to.equal(`operation successful`)
+                done();
+            })
+        })
+        it('response should have  status of 200',(done)=>{
+            chai.request(app).get('/api/v1/menu').type('form').end(function(err,res){
+                
+                expect(res).to.have.status(200);
+                done();
+            })
+        })
+        it('response body to have property menu', function(done){
+            chai.request(app).get('/api/v1/menu').type('form').end(function(err,res){
+                expect(res.body).to.have.property('menu');
+                done();
+            })
+        })
+        it('menu should be an array', function(done){
+            chai.request(app).get('/api/v1/menu').type('form').end(function(err,res){
+                expect(res.body.menu).to.be.an('array');
+                done();
+            })
+        })
+    })
 })
