@@ -1,8 +1,8 @@
 import express from 'express';
-import {signUp} from '../Controller';
-// import orders from '../Order.json'
+import {loginUser, signUp} from '../Controller'
+
 let router = express.Router();
 
+router.post('/login', loginUser)
 router.post('/signup', signUp)
-
 export default router;

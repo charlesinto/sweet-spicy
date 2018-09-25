@@ -31,7 +31,10 @@ div.company-logo{
     /* justify-content: space-between; */
     
 }
-input[type=email] , input[type=password]{
+form.signup {
+    display: none;
+}
+input[type=email] , input[type=password], input[type=text]{
     height: 30px;
     box-sizing: border-box;
     border: none;
@@ -85,10 +88,12 @@ div.login-form-desktop{
     }
     
 }
-a.signup {
+span.link-to-signup {
     align-self: center;
+    cursor: pointer;
+    color: #00e676;
 }
-a.signup:hover {
+span.link-to-signup:hover {
     text-decoration: underline;
 }
 div.btn-group{

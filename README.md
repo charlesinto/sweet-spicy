@@ -33,6 +33,18 @@
     * quantity
     * unit_price
     * itemid
+#### POST api/v1/auth/login
+* logs a user in. Requires:
+  * email
+  * password
+
+#### POST api/v1/auth/sigup
+* signs a user up. Requires:
+  * email
+  * password
+  * phonenumber
+  * firstname
+  * lastname
 
 ## Dependencies
 * nodejs
