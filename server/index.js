@@ -7,6 +7,7 @@ import route from './route'
 import orders from './route/orders';
 import auth from './route/auth';
 import menuRoute from './route/menuRoute'
+import userRoute from './route/userRoute'
 require('dotenv').config();
 
 const apiVersion = express.Router();
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use('/api/v1/auth', auth)
 app.use('/api/v1/orders', orders);
 app.use('/api/v1/menu', menuRoute);
+app.use('/api/v1/users', userRoute)
 
 let port = process.env.PORT || 5000;
 let server = http.createServer(app)
