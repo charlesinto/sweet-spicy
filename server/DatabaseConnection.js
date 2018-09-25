@@ -10,9 +10,14 @@ import pg from 'pg';
 require('dotenv').config();
 let pool;
 if(process.env.NODE_ENV ==='DEVELOPMENT'){
+<<<<<<< HEAD
      
     const config = {
         user: process.env.DB_USER,
+=======
+    const config = {
+        user:process.env.DB_USER,
+>>>>>>> feat/160480263/user-should-login
         database: process.env.LOCAL_DB, 
         password: process.env.DB_PASSWORD, 
         port: 5432, 
