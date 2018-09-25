@@ -21,7 +21,7 @@
     * unit_price
     * quantity
     * amountordered
-#### GET api/v1/order
+#### GET api/v1/orders
 * requires no parameters, retrives all the orders on the database
 
 #### GET api/v1/orders/:id
