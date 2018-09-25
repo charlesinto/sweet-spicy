@@ -32,8 +32,19 @@
     * quantity
     * unit_price
     * itemid
-#### GET api/v1/menu
-* Gets available menu. No paramters required
+#### POST api/v1/auth/login
+* logs a user in. Requires:
+  * email
+  * password
+
+#### POST api/v1/auth/sigup
+* signs a user up. Requires:
+  * email
+  * password
+  * phonenumber
+  * firstname
+  * lastname
+
 ## Dependencies
 * nodejs
 * express
