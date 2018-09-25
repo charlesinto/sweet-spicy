@@ -4,7 +4,7 @@ import {createNewOrder, getAllOrders, getAnOrder, updateOrder} from '../Controll
 // import orders from '../Order.json'
 let router = express.Router();
 
-router.get('/', getAllOrders)
+router.get('/',Helper.veryifyToken, getAllOrders)
 router.get('/:id', getAnOrder)
 router.put('/:id', updateOrder)
 router.post('/', Helper.veryifyToken, createNewOrder)
