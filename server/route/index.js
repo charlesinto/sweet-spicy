@@ -80,6 +80,7 @@ let menu = [
 
 ]
 
+
 router.get('/',(req,res, next)=>{
     res.sendFile(__dirname + '/index.html');
 });
