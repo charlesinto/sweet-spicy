@@ -78,7 +78,8 @@ class Helpers {
                         res.json({message:`${keys[i]}  required and must be numbers of 11 digits`});
                         return false;
                     }
-                }if(keys[i] === 'quantity'){
+                }if(typeof obj[keys[i]] !== 'number'  && keys[i] === 'quantity' ){
+                    console.log('in')
                     if( typeof obj[keys[i]] === "undefined" || obj[keys[i]] === '' || !Validator.isNumeric(obj[keys[i]])){
                         res.statusCode = 400;
                         res.setHeader('content-type', 'application/json');
@@ -109,7 +110,7 @@ class Helpers {
         }
     }
     veryifyToken (req,res,next){
-        let token = process.env.SECRET_KEY || 'brillianceisevenlydistributed';
+        let key = process.env.SECRET_KEY || 'brillianceisevenlydistributed';
         const bearerHeader = req.body.token || req.headers['authorization'];
     
             if (!bearerHeader){
@@ -117,7 +118,7 @@ class Helpers {
                     message: 'Unauthorized user'
                 });
             } else if(typeof bearerHeader !== undefined){
-                jwt.verify(bearerHeader, token,(err, authData) => {
+                jwt.verify(bearerHeader, key ,(err, authData) => {
                     if(err) {
                         res.status(403).send({
                             message: "Forbidden access"
@@ -158,6 +159,7 @@ class Helpers {
                     client.query(sql,params,(err,result)=>{
                         client.release();
                         if(err){
+                            console.log(err)
                             reject(err);
                         }else{
                             resolve(result)
@@ -168,6 +170,7 @@ class Helpers {
                     client.query(sql,(err,result)=>{
                       client.release();
                         if(err){
+                            console.log(err)
                             reject(err);
                         }else{
                             resolve(result)
