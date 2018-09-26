@@ -1,6 +1,12 @@
 import Helper from '../Helpers';
 import order from '../Orders';
 import { ADMIN_USER, TEST_ENV } from '../Controller';
+/**
+ * Gets an order by id
+ *
+ * @param {req,res}
+ * @return {null}
+ */
 export const getAnOrder = (req, res) => {
     if(req.token.roleid === ADMIN_USER){
         if(/^\d+$/.test(req.params.id)){
@@ -33,7 +39,12 @@ export const getAnOrder = (req, res) => {
     
     
 }
-
+/**
+ * Gets an order by id
+ *
+ * @param {req,res,env}
+ * @return {null}
+ */
 const getOrders = (req,res,env) => {
     let requestId = parseInt(req.params.id)
     let sql = 'SELECT * FROM BASE_ORDER where id = $1';
@@ -51,7 +62,10 @@ const getOrders = (req,res,env) => {
         errorMessage(res,err);
     })
 }
-
+/**
+ * A function that sets up table when the environment is TEST
+ *
+ */
 const setUpTable = () => {
     return new Promise((resolve,reject) => {
         let sql = 'CREATE TABLE BASE_ORDER(id serial, orderid BIGINT not null, userid integer not null,itemid integer\
@@ -64,7 +78,10 @@ const setUpTable = () => {
 
     })
 }
-
+/**
+ * A function sends on success message
+ *@param {res, result}
+ */
 const successMessage = (res,result) => {
     res.statusCode = 200;
      res.setHeader('content-type', 'application/json');
@@ -74,6 +91,10 @@ const successMessage = (res,result) => {
             
         })
 }
+/**
+ * A function that inserts dummy data into table when the environment is TEST
+ *
+ */
 const insertToTable = () => {
     return new Promise((resolve,reject) => {
         let sql = "\
@@ -88,6 +109,10 @@ const insertToTable = () => {
     })
     
 }
+/**
+ * A function sends on error message
+ *@param {res,err}
+ */
 const errorMessage = (res,err) => {
     res.statusCode = 404;
     res.setHeader('content-type', 'application/json');
@@ -97,6 +122,10 @@ const errorMessage = (res,err) => {
             
         }) 
 }
+/**
+ * A function that drop table when the environment is TEST
+ *
+ */
 const dropTable = () => {
     return new Promise((resolve,reject) => {
         let sql = 'DROP TABLE IF EXISTS BASE_ORDER';
