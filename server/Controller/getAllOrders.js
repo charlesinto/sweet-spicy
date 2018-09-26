@@ -1,13 +1,13 @@
 import Helper from '../Helpers';
 import order from '../Orders';
-
+import { ADMIN_USER,TEST_ENV } from '../Controller';
 export const getAllOrders = (req, res) => {
-    if(req.token.roleid === 1){
-        if(process.env.NODE_ENV === 'TEST'){
+    if(req.token.roleid === ADMIN_USER){
+        if(process.env.NODE_ENV === TEST_ENV){
             setUpTable()
             .then(() => {
                 insertToTable()
-                .then(() => getOrders(req,res,'TEST'))
+                .then(() => getOrders(req,res,TEST_ENV))
                 .catch((err) => errorMessage(res,err))
             })
             .catch((err) => errorMessage(res,err))
