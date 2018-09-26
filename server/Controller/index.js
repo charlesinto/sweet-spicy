@@ -7,3 +7,5 @@ export * from './signUp';
 export * from './getMenu';
 export * from './getUserOrders';
 export * from './constants';
+export * from './addToMenu';
+export * from './UploadHandler';

@@ -79,13 +79,18 @@ class Helpers {
                         return false;
                     }
                 }if(typeof obj[keys[i]] !== 'number'  && keys[i] === 'quantity' ){
-                    console.log('in')
                     if( typeof obj[keys[i]] === "undefined" || obj[keys[i]] === '' || !Validator.isNumeric(obj[keys[i]])){
                         res.statusCode = 400;
                         res.setHeader('content-type', 'application/json');
                         res.json({message:`${keys[i]}  required and must be numbers of 11 digits`});
                         return false;
                     }
+                }
+                if((keys[i] === 'unit_price' || keys[i] === 'amountordered') &&  !/^\d+$/.test(obj[keys[i]])){
+                    res.statusCode = 400;
+                    res.setHeader('content-type', 'application/json');
+                    res.json({message:`${keys[i]}  required and must be numbers `});
+                    return false;
                 }
                 if(keys[i] === 'email'){
                     
