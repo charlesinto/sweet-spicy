@@ -46,6 +46,10 @@
 #### GET api/v1/users/userid/orders
   * Gets the order history of a particular logged in user with the id - userid
       * userid should be a number
+
+#### POST api/v1/menu
+  * Given an admin user, he should be able to add food items to meal
+  
 ## Dependencies
 * nodejs
 * express
