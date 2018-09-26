@@ -48,8 +48,11 @@
       * userid should be a number
 
 #### POST api/v1/menu
-  * Given an admin user, he should be able to add food items to meal
-  
+  * Given an admin user, he should be able to add food items to meal. Requires:
+    * file with name - myImage
+    * itemname - name of the food
+    * unit_price - price of the food
+
 ## Dependencies
 * nodejs
 * express
