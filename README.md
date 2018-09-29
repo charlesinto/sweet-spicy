@@ -38,14 +38,16 @@
   * email
   * password
 
-#### POST api/v1/auth/sigup
+#### POST api/v1/auth/sigups
 * signs a user up. Requires:
   * email
   * password
   * phonenumber
   * firstname
   * lastname
-
+#### GET api/v1/users/userid/orders
+  * Gets the order history of a particular logged in user with the id - userid
+      * userid should be a number
 ## Dependencies
 * nodejs
 * express
