@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.com/charlesinto/sweet-spicy.svg?branch=develop-challenge3)](https://travis-ci.com/charlesinto/sweet-spicy)
+[![Build Status](https://travis-ci.com/charlesinto/sweet-spicy.svg?branch=develop-challenge3)](https://travis-ci.com/charlesinto/sweet-spicy)  [![Coverage Status](https://coveralls.io/repos/github/charlesinto/sweet-spicy/badge.svg?branch=feature)](https://coveralls.io/github/charlesinto/sweet-spicy?branch=feature)
 
 # sweet-spicy
 ## A fast Food App with the following features
