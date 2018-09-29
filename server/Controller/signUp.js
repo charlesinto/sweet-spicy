@@ -18,7 +18,7 @@ export const signUp = (req,res) => {
 const signUserUp = (req,res, env) => {
     let request = Helper.trimWhiteSpace(req.body); 
     if(!Helper.validateKey(request, ['firstname','lastname','email','password','phonenumber'])){
-        Helper.displayMessage(res,400, 'Bad Request,one or more keys is missing');
+      return  Helper.displayMessage(res,400, 'Bad Request,one or more keys is missing');
     }
     if(Helper.validateInput(res,request)){
         let hashpassword = bcrypt.hashSync(request.password,10);
@@ -43,7 +43,7 @@ const signUserUp = (req,res, env) => {
                     let sql = 'SELECT * FROM BASE_USER WHERE email = $1'
                         Helper.executeQuery(sql,[request.email])
                         .then((result)=>{
-                             Helper.assignToken({id:result.rows[0].userid,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,roleid:result.rows[0].roleid,rolename:result.rolename,email:result.rows[0].email})
+                             Helper.assignToken({userid:result.rows[0].userid,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,roleid:result.rows[0].roleid,rolename:result.rolename,email:result.rows[0].email})
                             .then((token)=>{
                                 if(env == 'TEST'){
                                     let sql = 'DROP TABLE IF EXISTS BASE_USER CASCADE;';

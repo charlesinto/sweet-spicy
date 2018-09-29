@@ -14,12 +14,13 @@
 ## ROUTE
 #### POST api/v1/orders
 * Required paramters
-  * order must be an array of objects containing
-     * itemname
-     * itemid
-     * quantity
-     * amount
-  * userid - this is the id of the user making the order
+  * token - can set in the header with the key authoriztion or added to the request body
+  * items - An array of the orders made by the user. The array contains individual objects thats makes up the order. The keys required are: 
+    * itemid
+    * itemname
+    * unit_price
+    * quantity
+    * amountordered
 #### GET api/v1/order
 * requires no parameters, retrives all the orders on the database
 
