@@ -1,14 +1,14 @@
 import Helper from '../Helpers';
-
+import { TEST_ENV } from '../Controller'
 export const getUserOrders = (req,res) => {
     if(req.token){
         if(/^\d+$/.test(req.params.id)){
-            if( process.env.NODE_ENV === 'TEST'){
+            if( process.env.NODE_ENV === TEST_ENV){
                 setUpTable()
                 .then(() => {
                     insertToTable()
                     .then(() => {
-                        getUserOrder(req,res,'TEST')
+                        getUserOrder(req,res,TEST_ENV)
                     })
                     .catch((err) => {
                         errorMessage(res,err)

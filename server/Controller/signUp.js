@@ -1,12 +1,12 @@
 import Helper from '../Helpers';
 import bcrypt from 'bcrypt';
 import fs from 'fs';
-
+import { TEST_ENV } from '../Controller'
 export const signUp = (req,res) => {
-    if(process.env.NODE_ENV == 'TEST'){
+    if(process.env.NODE_ENV == TEST_ENV){
         let sql = 'CREATE TABLE IF NOT EXISTS BASE_USER(userid SERIAL, firstname varchar(50), lastname varchar(50),email varchar(100),password varchar(100), phonenumber varchar(50), roleid int, rolename varchar(50), datecreated timestamp)'
         Helper.executeQuery(sql)
-        .then((result)=> {signUserUp(req,res, 'TEST')})
+        .then((result)=> {signUserUp(req,res, TEST_ENV)})
         .catch((err) => Helper.displayMessage(res, 507, 'Server error or service unavailabe',err));
     }else{
         signUserUp(req,res);

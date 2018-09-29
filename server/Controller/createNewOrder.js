@@ -1,12 +1,12 @@
 import Helper from '../Helpers';
 import order from '../Orders';
 import Helpers from '../Helpers';
-
+import { TEST_ENV } from '../Controller'
 export const createNewOrder = (req, res) => {
     if(req.token){
-        if(process.env.NODE_ENV === 'TEST'){
+        if(process.env.NODE_ENV === TEST_ENV){
             setUpTable()
-            .then(() => postOrder(req,res,'TEST'))
+            .then(() => postOrder(req,res,TEST_ENV))
             .catch((err) => {
                 res.statusCode = 503;
                 res.setHeader('content-type', 'application/json');

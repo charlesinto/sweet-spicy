@@ -1,10 +1,10 @@
 import Helper from '../Helpers';
 import bcrypt from 'bcrypt';
-
+import { TEST_ENV } from '../Controller'
 export const loginUser = (req,res) => {
-    if(process.env.NODE_ENV === 'TEST'){
+    if(process.env.NODE_ENV === TEST_ENV){
         setUpdatabase() 
-        .then(() => logUserIn(req,res,'TEST'))
+        .then(() => logUserIn(req,res,TEST_ENV))
         .catch((err) => {Helper.displayMessage(res,406,err)});
     }else{
         logUserIn(req,res)

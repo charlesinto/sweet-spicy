@@ -66,61 +66,6 @@ let createuser = {
 	"password":"3450"
 }
 describe('Test all api end points', function(){
-    describe('It should get order by id', function(){
-        this.timeout(20000);
-        it('response should have a status of 200',(done)=>{
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                
-                expect(res).to.have.status(200);
-                done();
-            })
-        })
-        it('response should be an object', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                expect(res).to.be.an('object');
-                done();
-            })
-        })
-        it('response.text to be a string', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                expect(res.text).to.be.string
-                done();
-            })
-        })
-        it('response to have property message', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                expect(res.body).to.have.property('message');
-                done();
-            })
-        })
-        it('response to have property requests', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                expect(res.body).to.have.property('order');
-                done();
-            })
-        })
-        it('response.message to be operation successful', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-            
-                expect(res.body.message).to.equal("operation successful")
-                done();
-            })
-        })
-        it('order should be a json string', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                expect(res.body.order).to.be.string
-                done();
-            })
-        })
-        it('user order should be an array', function(done){
-            chai.request(app).get('/api/v1/orders/2').end(function(err,res){
-                let order = JSON.parse(res.body.order)
-                expect(order).to.be.an('array')
-                done();
-            })
-        })
-
-    })
     describe('It should update an order by id', function(){
         this.timeout(20000);
         it('response should have a status of 201',(done)=>{
@@ -477,6 +422,46 @@ describe('Test all api end points', function(){
         it('items should be an array', function(done){
             chai.request(app).get('/api/v1/orders').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
                 expect(res.body.orders).to.be.an('array');
+                done();
+            })
+        })
+    })
+    describe('it should get an order for admin user',() => {
+        this.timeout(40000);
+        it('response should be an object', function(done){
+            chai.request(app).get('/api/v1/orders/1').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response to have property message', function(done){
+            chai.request(app).get('/api/v1/orders/1').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })
+        it('message should be operation successful', function(done){
+            chai.request(app).get('/api/v1/orders/1').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
+                expect(res.body.message).to.equal('operation successful');
+                done();
+            })
+        })
+        it('response should have a status of 200',(done)=>{
+            chai.request(app).get('/api/v1/orders/1').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
+                
+                expect(res).to.have.status(200);
+                done();
+            })
+        })
+        it('response to have property order', function(done){
+            chai.request(app).get('/api/v1/orders/1').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
+                expect(res.body).to.have.property('order');
+                done();
+            })
+        })
+        it('order should be an object', function(done){
+            chai.request(app).get('/api/v1/orders/1').type('form').set('content-type', 'application/json').set('authorization', token).end(function(err,res){
+                expect(res.body.order).to.be.an('object');
                 done();
             })
         })
