@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/charlesinto/sweet-spicy.svg?branch=develop-challenge3)](https://travis-ci.org/charlesinto/sweet-spicy)
+
+[![Build Status](https://travis-ci.com/charlesinto/sweet-spicy.svg?branch=develop-challenge3)](https://travis-ci.com/charlesinto/sweet-spicy)
 
 # sweet-spicy
 ## A fast Food App with the following features
