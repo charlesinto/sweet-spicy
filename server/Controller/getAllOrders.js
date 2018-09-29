@@ -1,6 +1,11 @@
 import Helper from '../Helpers';
 import order from '../Orders';
 import { ADMIN_USER,TEST_ENV } from '../Controller';
+/**
+ * Gets all the order placed on the system
+ * @param {req,res,env}
+ * @return {null}
+ */
 export const getAllOrders = (req, res) => {
     if(req.token.roleid === ADMIN_USER){
         if(process.env.NODE_ENV === TEST_ENV){
