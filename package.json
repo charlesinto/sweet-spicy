@@ -36,6 +36,7 @@
     "body-parser": "^1.18.3",
     "chai": "^4.1.2",
     "chai-http": "^4.2.0",
+    "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "dotenv": "^6.0.0",
     "eslint": "^5.5.0",
