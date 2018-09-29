@@ -7,4 +7,8 @@ INSERT INTO BASE_ORDER(itemname,itemid, unit_price,quantity,amountordered,orderi
         ('rice',1,100, 5,500,3749, 'PENDING', NOW(), 8),
         ('beans',1,100, 5,500,3749, 'PENDING', NOW(), 8),
         ('garri',1,100, 5,500,3749, 'PENDING', NOW(), 8);
+
+UPDATE BASE_USER
+SET ROLEID = 2
+WHERE userid = 2;
     
