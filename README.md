@@ -22,17 +22,15 @@
     * quantity
     * amountordered
 #### GET api/v1/orders
-* requires no parameters, retrives all the orders on the database
+* requires no parameters, retrives all the orders on the database.Only available for user with admin role
 
 #### GET api/v1/orders/:id
-* retrives an order with id which must be an integer
+* retrives an order with id which must be an integer. Only available for user with admin role
 
 #### PUT api/v1/orders/:id
-* updates an order with id which must be an integer, requires
-    * itemname
-    * quantity
-    * unit_price
-    * itemid
+* updates the status an order with id which must be an integer.Only available for user with admin role. Requires
+    * status e.g:
+     ` {'status': 'CANCELLED'} `
 #### POST api/v1/auth/login
 * logs a user in. Requires:
   * email
