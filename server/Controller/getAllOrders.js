@@ -29,7 +29,11 @@ export const getAllOrders = (req, res) => {
     }
     
 }
-
+/**
+ * A function that retrives all order on database
+ * @param {req,res,env}
+ * @return {null}
+ */
 const getOrders = (req,res,env) => {
     let sql = 'SELECT * FROM BASE_ORDER';
     Helper.executeQuery(sql)
@@ -46,7 +50,10 @@ const getOrders = (req,res,env) => {
         errorMessage(res,err);
     })
 }
-
+/**
+ * set up table when running on test environment.
+ * creates table base_order
+ */
 const setUpTable = () => {
     return new Promise((resolve,reject) => {
         let sql = 'CREATE TABLE BASE_ORDER(id serial, orderid BIGINT not null, userid integer not null,itemid integer\
@@ -59,7 +66,11 @@ const setUpTable = () => {
 
     })
 }
-
+/**
+ * a module used for sending on success message
+ * @param {res,result}
+ * @return {null}
+ */
 const successMessage = (res,result) => {
     res.statusCode = 200;
      res.setHeader('content-type', 'application/json');
@@ -69,6 +80,10 @@ const successMessage = (res,result) => {
             
         })
 }
+/**
+ * If NODE_ENV is test after setup of table is done, insert dummy data into the table so
+ * that test can be carried out
+ */
 const insertToTable = () => {
     return new Promise((resolve,reject) => {
         let sql = "\
@@ -83,6 +98,11 @@ const insertToTable = () => {
     })
     
 }
+/**
+ * a module used for sending on error message
+ * @param {res,err}
+ * @return {null}
+ */
 const errorMessage = (res,err) => {
     res.statusCode = 404;
     res.setHeader('content-type', 'application/json');
@@ -92,6 +112,9 @@ const errorMessage = (res,err) => {
             
         }) 
 }
+/**
+ * If ENV is TEST, drop table after running test
+ */
 const dropTable = () => {
     return new Promise((resolve,reject) => {
         let sql = 'DROP TABLE IF EXISTS BASE_ORDER';
