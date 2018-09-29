@@ -4,4 +4,5 @@ install:
  - npm install
 services:
   - postgresql
-after_success: coveralls
+script: npm run coverage
+after_success: 'npm run coveralls'
