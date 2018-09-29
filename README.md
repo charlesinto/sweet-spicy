@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/charlesinto/sweet-spicy.svg?branch=feat/160788486/admin-should-add-to-menu)](https://travis-ci.org/charlesinto/sweet-spicy)
+[![Build Status](https://travis-ci.org/charlesinto/sweet-spicy.svg?branch=develop-challenge3)](https://travis-ci.org/charlesinto/sweet-spicy)
 
 # sweet-spicy
 ## A fast Food App with the following features
