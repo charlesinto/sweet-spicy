@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/charlesinto/sweet-spicy.svg?branch=feat/160788486/admin-should-add-to-menu)](https://travis-ci.org/charlesinto/sweet-spicy)
+
 # sweet-spicy
 ## A fast Food App with the following features
 * User can view Menu
@@ -46,6 +48,13 @@
 #### GET api/v1/users/userid/orders
   * Gets the order history of a particular logged in user with the id - userid
       * userid should be a number
+
+#### POST api/v1/menu
+  * Given an admin user, he should be able to add food items to meal. Requires:
+    * file with name - myImage
+    * itemname - name of the food
+    * unit_price - price of the food
+
 ## Dependencies
 * nodejs
 * express

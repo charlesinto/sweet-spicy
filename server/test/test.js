@@ -1,6 +1,9 @@
 import app from '../index'
 import chai from 'chai';
-import chaiHttp from 'chai-http'
+import chaiHttp from 'chai-http';
+import fs from 'fs';
+import path from 'path';
+import supertest from 'supertest';
 const should = chai.should();
 const expect = chai.expect;
 chai.use(chaiHttp);
@@ -62,6 +65,7 @@ let createuser = {
 	"lastname":"onuorah",
 	"password":"3450"
 }
+let boundary = Math.random();
 describe('Test all api end points', function(){
     describe('It should update an order by id', function(){
         this.timeout(20000);
@@ -462,4 +466,27 @@ describe('Test all api end points', function(){
             })
         })
     })
+    describe('it should add to menu for admin user',() => {
+        this.timeout(40000);
+        
+        it('response should be an object', function(done){
+            supertest(app).post('/api/v1/menu').type('form')
+            .set('content-type', 'multipart/form-data').set('authorization', token)
+            .attach('file',fs.readFileSync(path.join(__dirname,'girl.jpg')),'girl.jpg')
+            .field('itemname', 'eba').field('unit_price', '1000').end(function(err,res){
+                expect(res).to.be.an('object');
+                done();
+            })
+        })
+        it('response to have property message', function(done){
+            chai.request(app).post('/api/v1/menu').type('form')
+            .set('content-type', 'multipart/form-data').set('authorization', token)
+            .attach('file',fs.readFileSync(path.join(__dirname,'girl.jpg')),'girl.jpg')
+            .field('itemname', 'eba').field('unit_price', '1000').end(function(err,res){
+                expect(res.body).to.have.property('message');
+                done();
+            })
+        })       
+    })
 })
+

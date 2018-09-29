@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS BASE_USER(
     password varchar(300),
     phonenumber varchar(25),
     roleid integer,
-    rolename varchar(100)
-    datecreated timestamp,
+    rolename varchar(100),
+    datecreated timestamp
 );
 
 INSERT INTO BASE_USER(firstname,lastname,email,password,phonenumber,

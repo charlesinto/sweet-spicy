@@ -30,7 +30,7 @@ else if(process.env.NODE_ENV === 'TEST'){
  }
 else{
     pool = new pg.Pool({
-        connectionString: process.env.PRODUCTION_DB , ssl:true
+        connectionString: process.env.HEROKU_POSTGRESQL_GREEN_URL , ssl:true
     }); 
 }
 export default pool;
