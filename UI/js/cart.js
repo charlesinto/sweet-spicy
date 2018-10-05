@@ -1,8 +1,10 @@
 window.onload = () => {
+    setUpView();
+}
+let setUpView = () => {
     goToShop();
     loadCart();
 }
-
 let goToShop = () => {
     Array.from(document.getElementsByClassName('go-to-shop')).forEach(btn => {
         btn.addEventListener('click',(e)=> {
@@ -10,6 +12,44 @@ let goToShop = () => {
             window.location.href = window.origin;
         })
     })
+    Array.from(document.getElementsByClassName('check')).forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            bookOrder();
+        })
+    })
+
+}
+let bookOrder = () => {
+    let status = -1
+    if(localStorage.getItem('token')){
+        blockUi();
+        let request = JSON.parse(localStorage.getItem('cart'))
+        let items = {request};
+        fetch('/api/v1/orders',{
+            method: 'POST',
+            headers: {
+                'content-type':'application/json',
+                'authorization': localStorage.getItem('token')
+            },
+            body: JSON.stringify({
+                items: request,
+                token: localStorage.getItem('token')
+            })
+            
+            }
+        )
+        .then(res =>{status = res.status;  return res.json()} )
+        .then(res => {
+            if(status === 201){
+                unBlockUI();
+                alert('Order successfully Posted')
+            }
+        })
+        .catch(err => console.log(err))    
+    }else{
+        alert('please log in')
+    }
 }
 let empytCart = () => {
     Array.from(document.getElementsByClassName('empty-cart')).forEach(item => {
@@ -36,10 +76,10 @@ let loadCart = () => {
         cart.forEach(item => {
             let orderItem = document.createElement('div');
             orderItem.className = "order-item"
-            orderItem.id = item.imageid;
+            orderItem.id = item.itemid;
             let itemName = document.createElement('div');
             itemName.className = "item-name item"
-            itemName.innerText = item.name;
+            itemName.innerText = item.itemname;
             orderItem.appendChild(itemName);
             let range = document.createElement('div');
             range.className = "range"
@@ -68,7 +108,7 @@ let loadCart = () => {
             span1.innerText = "\u20A6";
             let span2 = document.createElement('span')
             span2.className = "price";
-            span2.innerText = item.amount;
+            span2.innerText = item.quantity * item.unit_price;
             itemAmount.appendChild(span1);
             itemAmount.appendChild(span2);
             orderItem.appendChild(itemAmount);
@@ -81,7 +121,7 @@ let loadCart = () => {
 
             document.getElementsByClassName('orders')[0].appendChild(orderItem);
             totalQuanity += parseInt(item.quantity);
-            totalAmount += parseInt(item.amount);
+            totalAmount += parseInt(item.quantity * item.unit_price);
         })
         loadData() 
         userFucntions();
@@ -99,10 +139,12 @@ let decreaseQuantity = () => {
         btn.addEventListener('click',(e)=>{
             e.stopPropagation();
             let input = e.target.parentNode.parentNode.children[1].children[1].children[0]
+            console.log(e)
             let id = parseInt(e.target.parentNode.parentNode.id)
             let currentValue = parseInt(input.value);
             if(currentValue > 0){
                 input.value = currentValue - 1;
+                updateAmountOrdered(e,currentValue, currentValue -1)
                 updateItemCount(currentValue,parseInt(input.value))
             }
             updateCart(id,"SUBTRACT")
@@ -110,39 +152,41 @@ let decreaseQuantity = () => {
         })
     })
 }
+let updateAmountOrdered = (e,currentValue, nextValue) => {
+    e.target.parentNode.parentNode.children[2].innerText = `\u20A6` + (parseInt(e.target.parentNode.parentNode.children[2].innerText.substr(1)) / currentValue) * nextValue
+}
 let increaseQuantity = () => {
     Array.from(document.getElementsByClassName('back-arrow')).forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             let currentValue = 0;
-            let id = parseInt(e.target.parentNode.parentNode.id);
+            let itemid = parseInt(e.target.parentNode.parentNode.id);
             Array.from(e.target.nextSibling.children).forEach(input => {
                 let currentValue =parseInt(input.value)
                 input.value = currentValue + 1
+                updateAmountOrdered(e,currentValue, currentValue + 1);
                 updateItemCount(currentValue, parseInt(input.value) )
             })
-            updateCart(id, "ADD")
+            updateCart(itemid, "ADD")
         })
     })
 }
 let updateItemCount = (currentValue, nextValue) => {
     let value = document.getElementById('totalQuantity').innerText
-    console.log('value',value)
     document.getElementById('totalQuantity').innerText = value - currentValue + nextValue
-    console.log('next',document.getElementById('totalQuantity').innerText)
 }
 let updateCart = (id, action) => {
     switch(action){
         case 'ADD':
             cart.forEach(item => {
-                if(item.imageid == id){
+                if(item.itemid == id){
                     item.quantity++;
                 }
             })
             break;
         case 'SUBTRACT':
             cart.forEach(item => {
-                if(item.imageid == id){
+                if(item.itemid == id){
                     if(item.quantity > 0){
                         item.quantity--
                     }
@@ -153,6 +197,7 @@ let updateCart = (id, action) => {
 
     }
     localStorage.setItem('cart',JSON.stringify(cart));
+    loadData();
 }
 
 let resetFormOnCartEmpty = () => {
@@ -177,10 +222,11 @@ let rebuildData = (id) => {
     let index = 0;
     for(i = 0; i < cart.length ; i++){
         index = i;
-        if(cart[i].imageid === parseInt(id)){
+        if(cart[i].itemid === parseInt(id)){
             break;
         }
     }
+    localStorage.removeItem('cart');
     cart.splice(index, 1);
     localStorage.setItem('cart',JSON.stringify(cart));
     if(cart.length == 0){
@@ -190,11 +236,12 @@ let rebuildData = (id) => {
 }
 
 let loadData = () => {
+    console.log('rebuild data')
    let totalQuanity = 0;
    let totalAmount = 0;
    cart.forEach(item => {
        totalQuanity += parseInt(item.quantity);
-       totalAmount += parseInt(item.amount);
+       totalAmount += parseInt(item.unit_price * item.quantity);
    })
    document.getElementById('totalQuantity').innerText = totalQuanity;
     Array.from(document.getElementsByClassName('check')).forEach(btn => {

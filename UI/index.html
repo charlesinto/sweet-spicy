@@ -44,7 +44,10 @@
                         <a href="">My Cart</a>
                     </li> -->
                     <li class="company-links">
-                        <a href="/pages/login.html">Login</a>
+                        <a class="login" href="/pages/login.html">Login</a>
+                    </li>
+                    <li class="company-links">
+                        <a class="logout" href="/">Logout</a>
                     </li>
                     <li class="cart">
                             <div class="cart-icon">
@@ -72,13 +75,14 @@
                 <a href="#">Contact us</a>
                 <a href="/pages/user_order.html">View Orders</a>
                 <a href="#">My Cart</a>
-                <a href="/pages/login.html">login</a>
+                <a class="login" href="/pages/login.html">login</a>
+                <a class="logout" href="/">Logout</a>
             </div>
     </div>
     <div class="food-menu">
         
     </div>
-    
+    <script type="text/javascript" src="/js/utility.js"></script>
     <script type='text/javascript' src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();

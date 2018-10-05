@@ -11,6 +11,12 @@ div.container{
     height: calc(100vh - 50px);
     
 }
+.hide-form{
+    display: none !important
+}
+.show-form{
+    display: flex !important
+}
 div.company-head{
     display: flex;
     flex: 1;
@@ -120,4 +126,30 @@ div.company-name{
     font-size: 20px;
     color:#f50057;
     font-weight: 500;
+}
+
+div.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    flex: 1;
+    /* width: 400px; */
+    /* height: 400px; */
+    position: absolute;
+    z-index: 100;
+    top: 50% !important;
+    background: #fff;
+    left: 50%;
+}
+div.loader-body{
+    position: absolute;
+    display: none;
+    top: 0;
+    flex: 1;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }

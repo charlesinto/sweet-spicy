@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/login.css" />
     <script type="text/javascript" src="/js/login.js"></script>
+    <script type='text/javascript' src='/js/utility.js'></script>
     <title>Login</title>
 </head>
 <body>
@@ -25,20 +26,20 @@
                     <a href="">Contact us</a>
                 </li>
                 <li class="company-links">
-                    <a href="">View Orders</a>
+                    <a href="/pages/user_orders.html">View Orders</a>
                 </li>
                 <li class="company-links">
-                    <a href="">My Cart</a>
+                    <a href="/pages/cart.html">My Cart</a>
                 </li>
-                <li class="company-links">
+                <!-- <li class="company-links">
                     <a href="/pages/login.html">Login</a>
-                </li>
+                </li> -->
             </ul>
         </nav>
 
         </section>
         <div class="container">
-            <div class="login-form-desktop">
+            <div id='desktop-view' class="login-form-desktop">
                     <div class="company-head">
                             <div class="company-logo">
                                 <div>
@@ -49,14 +50,14 @@
                                 </div>
                             </div>
                         </div>
-                        <form onsubmit="return false">
+                        <form class="logon" onsubmit="return false">
                             <div class="form-elements">
                                 <label>email</label>
-                                <input type="email" placeholder="johnDoe@gmail.com" />
+                                <input id='email-login-1' type="email" placeholder="johnDoe@gmail.com" />
                             </div>
                             <div class="form-elements">
                                 <label>password</label>
-                                <input type="password" placeholder="password" />
+                                <input id='pwd-login-1' type="password" placeholder="password" />
                             </div>
                             <div class="btn-group">
                                 <div class="form-elements">
@@ -71,27 +72,27 @@
                         <form class="signup" onsubmit="return false">
                                 <div class="form-elements">
                                         <label>First Name</label>
-                                        <input type="text" placeholder="first name" />
+                                        <input id='fname-signup-1' type="text" placeholder="first name" required/>
                                 </div>
                                 <div class="form-elements">
                                         <label>Last Name</label>
-                                        <input type="text" placeholder="Last name" />
+                                        <input id='lname-signup-1' type="text" placeholder="Last name" required/>
                                 </div>
                             <div class="form-elements">
                                 <label>email</label>
-                                <input type="email" placeholder="johnDoe@gmail.com" />
+                                <input id='email-signup-1' type="email" placeholder="johnDoe@gmail.com"  required/>
                             </div>
                             <div class="form-elements">
                                     <label>Phone Number</label>
-                                    <input type="text" placeholder="phone number" />
+                                    <input id='phonenumber-signup-1' type="text" placeholder="phone number" required/>
                                 </div>
                             <div class="form-elements">
                                 <label>password</label>
-                                <input type="password" placeholder="password" />
+                                <input id='pwd-signup-1' type="password" placeholder="password" required/>
                             </div>
                             <div class="form-elements">
                                     <label>Confirm Password</label>
-                                    <input type="password" placeholder="password" />
+                                    <input id='cpwd-signup-1' type="password" placeholder="password" required />
                                 </div>
                             <div class="btn-group">
                                 <div class="form-elements">
@@ -101,7 +102,7 @@
                             
                         </form>
             </div>
-            <div class="login-form-mobile">
+            <div id= 'mobile-view'class="login-form-mobile">
                 <div class="company-head">
                     <div class="company-logo">
                         <div>
@@ -115,27 +116,27 @@
                 <form class="signup" onsubmit="return false">
                         <div class="form-elements">
                                 <label>First Name</label>
-                                <input type="text" placeholder="first name" />
+                                <input id='fname-signup-2' type="text" placeholder="first name" />
                         </div>
                         <div class="form-elements">
                                 <label>Last Name</label>
-                                <input type="text" placeholder="Last name" />
+                                <input id='lname-signup-2' type="text" placeholder="Last name" />
                         </div>
                     <div class="form-elements">
                         <label>email</label>
-                        <input type="email" placeholder="johnDoe@gmail.com" />
+                        <input id='email-signup-2' type="email" placeholder="johnDoe@gmail.com" />
                     </div>
                     <div class="form-elements">
                             <label>Phone Number</label>
-                            <input type="text" placeholder="phone number" />
+                            <input id='phonenumber-signup-2' type="text" placeholder="phone number" />
                         </div>
                     <div class="form-elements">
                         <label>password</label>
-                        <input type="password" placeholder="password" />
+                        <input id='pwd-signup-2' type="password" placeholder="password" />
                     </div>
                     <div class="form-elements">
                             <label>Confirm Password</label>
-                            <input type="password" placeholder="password" />
+                            <input id='cpwd-signup-2' type="password" placeholder="password" />
                         </div>
                     <div class="btn-group">
                         <div class="form-elements">
@@ -144,14 +145,14 @@
                     </div>
                     
                 </form>
-                <form class="login" onsubmit="return false">
+                <form class="login logon" onsubmit="return false">
                     <div class="form-elements">
                         <label>email</label>
-                        <input type="email" placeholder="johnDoe@gmail.com" />
+                        <input id='email-login-2'type="email" placeholder="johnDoe@gmail.com" />
                     </div>
                     <div class="form-elements">
                         <label>password</label>
-                        <input type="password" placeholder="password" />
+                        <input id='pwd-login-2' type="password" placeholder="password" />
                     </div>
                     <div class="btn-group">
                         <div class="form-elements">
@@ -165,16 +166,33 @@
                 </form>
             </div>
         </div>
+        <div id='blockUI' class= 'loader-body'>
+            <div class="loader">
+                <img src = '/asset/loader.svg' alt="loader" width="32px" height="32px" />
+            </div>
+        </div>
+        
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" id="closeMenu" >&times;</a>
             <a href="#">Contact us</a>
             <a href="#">View Orders</a>
             <a href="#">My Cart</a>
-            <a href="#">Login</a>
+            <!-- <a href="#">Login</a> -->
         </div>
         <script type='text/javascript' src="/socket.io/socket.io.js"></script>
     <script>
         let socket = io();
+        Array.from(document.getElementsByClassName('link-to-signup')).forEach(link => {
+            link.addEventListener('click', e => {
+                e.stopPropagation();
+                Array.from(document.getElementsByClassName('logon')).forEach(logonForm => {
+                    logonForm.className = 'hide-form'
+                })
+                Array.from(document.getElementsByClassName('signup')).forEach(signInForm => {
+                    signInForm.className = 'show-form'
+                })
+            })
+        })
     </script>
 </body>
 </html>

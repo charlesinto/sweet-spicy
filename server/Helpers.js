@@ -18,7 +18,7 @@ class Helpers {
         if(typeof obj !== "undefined" && obj !== '' && typeof obj === 'object' && typeof obj.length === "undefined"){
            
             Object.keys(obj).forEach(function(key){ 
-                if( typeof obj[key] !== "number"){
+                if(obj[key] !== null && typeof obj[key] !== "number"){
                     obj[key] = obj[key].trim()
                 }
              });
@@ -33,28 +33,25 @@ class Helpers {
             return false;
         }else{
             let objetctKey = Object.keys(obj);
-            if(objetctKey.length !== keys.length){
-                return false;
-            }else{
-                let keyMatch;
-                for(let i=0; i < keys.length; i++){
-                    keyMatch = false;
-                    for(let j=0;j<objetctKey.length;j++){
-                        if(keys[i] === objetctKey[j]){
-                            keyMatch = true;
-                            
-                        }
-                    }
-                    if(!keyMatch){
-                        return false;
+            let keyMatch;
+            for(let i=0; i < keys.length; i++){
+                keyMatch = false;
+                for(let j=0;j<objetctKey.length;j++){
+                    if(keys[i] === objetctKey[j]){
+                        keyMatch = true;
+                        
                     }
                 }
-                if(keyMatch){
-                    return true
-                }else{
+                if(!keyMatch){
                     return false;
                 }
             }
+            if(keyMatch){
+                return true
+            }
+                return false;
+                
+            
         }
     }
     validateInput(res, obj){
