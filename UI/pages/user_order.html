@@ -63,25 +63,31 @@
             <div class="sect-1">
 
             </div>
-            <div class="table-container">
+            <div id='tbl-container' class="table-container">
                 <div class="search-box1">
                     <div class="input">
                         <label>Batch Id</label>
-                        <input type="text" placeholder="orderid" />
+                        <input type="text" placeholder="batch id" />
+                    </div>
+                    <div class="input">
+                        <label>Order Id</label>
+                        <input type="text" placeholder="order id" />
                     </div>
                     <button class="search-btn">Search</button>
                 </div>
                 <div class="table-div">
                         <table id="customers">
                                 <tr>
-                                  <th>s/n</th>
-                                  <th>batchId</th>
-                                  <th>order</th>
-                                  <th>quantity</th>
-                                  <th>amount paid (&#8358;)</th>
-                                  <th>status</th>
+                                  <th>S/N</th>
+                                  <th>Batch Id</th>
+                                  <th>Order Id</th>
+                                  <th>Order</th>
+                                  <th>Quantity</th>
+                                  <th>Amount paid (&#8358;)</th>
+                                  <th>Status</th>
+                                  <th>Date Ordered</th>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                   <td>1</td>
                                   <td>123</td>
                                   <td>rice</td>
@@ -160,13 +166,16 @@
                                     <td>10</td>
                                     <td>10,000</td>
                                     <td><div class="status pending">Pending</div></td>
-                                </tr>
+                                </tr> -->
                               </table>
                 </div>
                 
-                  
+                <div class="empty-cart">
+                        <img src="/asset/cart.svg" width="48px" height="48px" alt="cart" />
+                        <p>Cart is empty</p>
+                    </div>
             </div>
-            <div class="empty-cart">
+            <div id='empty-orders' class="empty-cart">
                     <img src="/asset/cart.svg" width="48px" height="48px" alt="cart" />
                     <p>No Order Found</p>
                 </div>
@@ -179,6 +188,15 @@
             <a href="/pages/cart.html">My Cart</a>
             <a href="/pages/login.html">Login</a>
         </div>
-
+        
+        <div id='blockUI' class= 'loader-body'>
+                <div class="loader">
+                    <img src = '/asset/loader.svg' alt="loader" width="32px" height="32px" />
+                </div>
+            </div>
+        <script type="text/javascript" src='/js/utility.js'></script>
+        <script type="text/javascript">
+            blockUi();
+        </script>
 </body>
 </html>

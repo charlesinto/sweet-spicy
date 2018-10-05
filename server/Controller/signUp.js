@@ -38,7 +38,7 @@ const signUserUp = (req,res, env) => {
                 
             }else{
                 let sql = 'INSERT INTO BASE_USER(firstname,lastname,email,phonenumber,password,roleid,DATECREATED,rolename) values($1,$2,$3,$4,$5,$6,$7,$8)'
-                Helper.executeQuery(sql,[request.firstname,request.lastname,request.email,request.phonenumber,hashpassword,1,'NOW()','SUPER ADMINISTRATOR'])
+                Helper.executeQuery(sql,[request.firstname,request.lastname,request.email,request.phonenumber,hashpassword,2,'NOW()','USER'])
                 .then((result)=>{
                     let sql = 'SELECT * FROM BASE_USER WHERE email = $1'
                         Helper.executeQuery(sql,[request.email])
@@ -56,7 +56,8 @@ const signUserUp = (req,res, env) => {
                                             useremail: `${request.email}`,
                                             roleid: `${result.rows[0].roleid}`,
                                             rolename: `${result.rows[0].rolename}`,
-                                            token
+                                            token,
+                                            userid: `${result.rows[0].userid}`
                                         })
                                     })
                                     .catch((err) =>Helper.displayMessage(res,503,err));

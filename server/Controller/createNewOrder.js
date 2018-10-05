@@ -52,6 +52,7 @@ const dropTable = () => {
     })
 }
 const postOrder = (req,res,env) => {
+    console.log(req.body);
     let params = '';
     if(!Helpers.validateKey(req.body,['items'])){
         res.statusCode = 400;
@@ -63,7 +64,7 @@ const postOrder = (req,res,env) => {
         let orderid = 3000 + new Date().getUTCMilliseconds()
         for(let i = 0; i< req.body.items.length; i++){
             let item = Helper.trimWhiteSpace(req.body.items[i]);
-            if(!Helpers.validateKey(item,["itemname", "quantity", "unit_price","itemid", "amountordered"])){
+            if(!Helpers.validateKey(item,["itemname", "quantity", "unit_price","itemid"])){
                 res.statusCode = 403;
                 res.setHeader('content-type', 'application/json');
                 return res.json({message:'Bad Request,one or more keys is missing'});
@@ -71,7 +72,7 @@ const postOrder = (req,res,env) => {
             
             else if(Helper.validateInput(res, Helper.trimWhiteSpace(req.body.items[i]))) {
                 let pickupLocation = req.body.items[i].billto;
-                    params = `('${req.body.items[i].itemname}',${req.body.items[i].itemid},${req.body.items[i].unit_price}, ${req.body.items[i].quantity},${req.body.items[i].amountordered},${orderid}, 'PENDING', NOW(), ${req.token.userid})`;
+                    params = `('${req.body.items[i].itemname}',${req.body.items[i].itemid},${req.body.items[i].unit_price}, ${req.body.items[i].quantity},${req.body.items[i].unit_price * req.body.items[i].quantity},${orderid}, 'PENDING', NOW(), ${req.token.userid})`;
                     request.push(params);
             }else{
                 res.statusCode = 401;

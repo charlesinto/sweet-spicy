@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src="/js/admin_orders.js"></script>
+    <script type="text/javascript" src='/js/utility.js'></script>
     <link rel='stylesheet' href="/css/admin_orders.css" />
     <title>Admin Dashboard</title>
 </head>
 <body>
+        <script type="text/javascript">
+            if(!(localStorage.getItem('token') && localStorage.getItem('roleid') == 1)){
+                window.href = window.orgin;
+            }    
+        </script>
         <div class="mobile-view">
                 <section>
                     <nav >
@@ -66,8 +72,12 @@
                     <div class="table-container">
                         <div class="search-box1">
                             <div class="input">
+                                <label>Batch Id</label>
+                                <input type="text" placeholder="batch id" />
+                            </div>
+                            <div class="input">
                                 <label>Order Id</label>
-                                <input type="text" placeholder="orderid" />
+                                <input type="text" placeholder="order id" />
                             </div>
                             <button class="search-btn">Search</button>
                         </div>
@@ -186,5 +196,11 @@
                     <a href="#">Create Admin</a>
                     <a href="/">Logout</a>
                 </div>
+                <div id='blockUI' class= 'loader-body'>
+                        <div class="loader">
+                            <img src = '/asset/loader.svg' alt="loader" width="32px" height="32px" />
+                        </div>
+                    </div>
+        <script type="text/javascript" src="/js/utility.js"></script>
 </body>
 </html>

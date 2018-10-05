@@ -9,6 +9,13 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+        <script type='text/javascript'>
+    
+            if(!(localStorage.getItem('token') && localStorage.getItem('roleid') == 1)){
+                console.log('window.origin', window.orgin, window.href, window.location.hostname);
+                window.location = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
+            }   
+        </script>
     <div class="mobile-view">
         <section>
             <nav >
@@ -42,8 +49,9 @@
                         <a href="#">Create Admin</a>
                     </li>
                     <li class="company-links">
-                        <a href="/">Log Out</a>
+                            <a class="logout" href="/">Logout</a>
                     </li>
+                
                     <!-- <li class="cart">
                             <div class="cart-icon">
                                 <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
@@ -88,7 +96,7 @@
                     <div class="action">
                         <button class="btn" id="add">Add</button>
                         <button class="btn" id="update">Update</button>
-                        <button class="btn" id="remove">Remove</button>
+                        <button class="btn" id="remove">Clear</button>
                     </div>
                 </form>
             </div>
@@ -98,7 +106,9 @@
             <a href="/pages/admin.html">View Orders</a>
             <a href="/pages/upload.html">Upload Item</a>
             <a href="#">Create Admin</a>
-            <a href="/">Logout</a>
+            <a class="logout" href="/">Logout</a>
+
         </div>
+        <script type='text/javascript' src='/js/utility.js'></script>
 </body>
 </html>

@@ -7,8 +7,16 @@
     <script type="text/javascript"src="/js/admin.js"></script>
     <link rel="stylesheet" href="/css/admin.css" />
     <title>Admin Dashboard</title>
+    
 </head>
 <body>
+    <script type='text/javascript'>
+    
+        if(!(localStorage.getItem('token') && localStorage.getItem('roleid') == 1)){
+            console.log('window.origin', window.orgin, window.href, window.location.hostname);
+            window.location = `${window.location.protocol}//${window.location.hostname}:${window.location.port}`;
+        }   
+    </script>
         <div class="mobile-view">
                 <section>
                     <nav >
@@ -74,10 +82,7 @@
             <script type='text/javascript' src="/socket.io/socket.io.js"></script>
             <script>
                 let socket = io();
-                // function closeNav(e) {
-                    
-                //     document.getElementById("mySidenav").style.width = "0";
-                // }
             </script>
+        <script type="text/javascript" src="/js/utility.js"></script>
 </body>
 </html>

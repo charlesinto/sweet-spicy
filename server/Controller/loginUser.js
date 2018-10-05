@@ -21,7 +21,7 @@ const logUserIn = (req,res,env) => {
         .then((result)=>{
             if(result.rowCount > 0){
                 if(bcrypt.compareSync(request.password,result.rows[0].password)){
-                    Helper.assignToken({id:result.rows[0].userid,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,roleid:result.rows[0].roleid,email:result.rows[0].email})
+                    Helper.assignToken({userid:result.rows[0].userid,firstname:result.rows[0].firstname,lastname:result.rows[0].lastname,roleid:result.rows[0].roleid,rolename:result.rolename,email:result.rows[0].email})
                     .then((token)=>{
                         if(env === 'TEST'){
                             dropTable()
@@ -85,6 +85,7 @@ const outputMessage = (res,result,token) => {
         token,
         roleid: `${result.rows[0].roleid}`,
         rolename: `${result.rows[0].rolename}`,
+        userid: `${result.rows[0].userid}`,
         user:`${result.rows[0].firstname} ${result.rows[0].lastname}`
     }) 
 }

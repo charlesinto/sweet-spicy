@@ -8,7 +8,7 @@ const should = chai.should();
 const expect = chai.expect;
 chai.use(chaiHttp);
 
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjgsImZpcnN0bmFtZSI6ImRpbmR1IiwibGFzdG5hbWUiOiJvbnVvcmFoIiwicm9sZWlkIjoxLCJlbWFpbCI6ImR1QGdtYWlsLmNvbSIsImlhdCI6MTUzNzg2NjMyNCwiZXhwIjoxNTM4NDcxMTI0fQ.Cj2LABp8Tqr9v6p1i1RTmi1XauM2Bi19GDSfbEz0dFM'
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjMsImZpcnN0bmFtZSI6ImNoYXJsZXMiLCJsYXN0bmFtZSI6Im9udW9yYWgiLCJyb2xlaWQiOjEsImVtYWlsIjoiY2hhcmxlcy5vbnVvcmFoQHlhaG9vLmNvbSIsImlhdCI6MTUzODc1MDM4MSwiZXhwIjoxNTM5MzU1MTgxfQ.WtwoDw1rqdfc3oO8IUPLoaNmAjYrC3lLaUKgXxRaIaM'
 
 let user = {
 	"email":"charls.onuorah12@yahoo.com",

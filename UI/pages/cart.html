@@ -9,6 +9,7 @@
     <title>Cart</title>
 </head>
 <body>
+    
     <div class="mobile-view">
        <section class="desktop">
             <nav>
@@ -19,14 +20,18 @@
                                 <a href="">Contact us</a>
                             </li>
                             <li class="company-links">
-                                <a href="">View Orders</a>
+                                <a href="/pages/user_order.html">View Orders</a>
                             </li>
                             <!-- <li class="company-links">
                                 <a href="">My Cart</a>
                             </li> -->
                             <li class="company-links">
-                                <a href="/pages/login.html">Login</a>
+                                <a class="login" href="/pages/login.html">login</a>
                             </li>
+                            <li>
+                                <a class="logout" href="/">Logout</a>
+                            </li>
+                
                             <li class="cart">
                                     <div class="cart-icon">
                                         <img class="cart-item" src = "/asset/cart.svg" width="24px" height="24px" alt="cart-icon" />
@@ -57,7 +62,7 @@
                 <div class="item-amount item">
                         <span id="amount-symbol">&#8358;</span><span class="totalAmount"></span> 
                 </div>
-                    <button class = " checkout-button2" id="check-btn2">Checkout</button>
+                    <button class = "check checkout-button2" id="check-btn2">Checkout</button>
                 
             </div>
             <!-- <div class="order-item">
@@ -110,10 +115,15 @@
                 <img src="/asset/cart.svg" width="48px" height="48px" alt="cart" />
                 <p>Cart is empty</p>
             </div>
-        
+            
+        </div>
+        <div id='blockUI' class= 'loader-body'>
+            <div class="loader">
+                <img src = '/asset/loader.svg' alt="loader" width="32px" height="32px" />
+            </div>
         </div>
         <button class = "check checkout-button" id="check-btn"></button>
     </div>
-    
+    <script type="text/javascript" src="/js/utility.js"></script>
 </body>
 </html>
